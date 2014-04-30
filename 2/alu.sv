@@ -7,7 +7,7 @@ module alu(
     output  reg        alu_carry   //indicates a carry out from ALU 
     );
 
-    // constant values    
+    // constant values
     parameter c_add      = 4'h1;
     parameter c_sub      = 4'h2;
     parameter c_inc      = 4'h3;
@@ -59,7 +59,7 @@ module alu(
     alu_out = result[7:0];
     alu_carry = result[8];
     alu_zero = !alu_out;
-  
+
     end
-    
+
 endmodule
