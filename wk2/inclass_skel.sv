@@ -27,7 +27,7 @@ module inclass (
 //instantiate the ram here. 
 //at least two ways to do it. 
 
-//instantaiate logic_blk here
+//instantiate logic_blk here
 
 
 //--------------------------------------------------------------------

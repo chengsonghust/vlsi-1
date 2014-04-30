@@ -1,0 +1,22 @@
+Download the files: inclass_skel.sv, logic_blk.sv, ram.sv and counter.sv from
+http://web.engr.oregonstate.edu/~traylor/ece474/inclass/wk2
+
+Using the given block diagram and the module description for logic_blk, ram and
+counter, fill out and complete the skeleton code in inclass_skel.sv.
+
+When you are done, write a script that compiles all the files bottom up and
+remove any errors.  Of course you must create a work directory first with:
+"vlib work".
+
+Once you have done this create a makefile to mantain your files.  This is done
+with the tool vmake.  Vmake works only on a compiled work directory.  Thus you
+must compile all the files in your design once before you execute vmake.  
+
+Vmake is run by typing:  vmake > makefile
+
+The file makefile is used by the Linux make utility to recreate a design by 
+recompiling only those files that need it when edits are made.
+
+After you have made the makefile, typing "touch ram.sv" will update the
+timestamp of ram.sv.  Typing make after that will cause make to recompile
+the design again to incorporate the (faked out) change.
