@@ -1,6 +1,7 @@
 read_sverilog alu.sv
 compile
 report_timing
+report_hierarchy
 report_area   
 write -format verilog -hierarchy -output alu.gate.v
 quit!
