@@ -118,19 +118,19 @@ Information: Total 0 isolation cells are inserted. (UPF-214)
    ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
     TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03    1859.8      0.00       0.0       0.0                          
-    0:00:03    1859.8      0.00       0.0       0.0                          
-    0:00:03    1859.8      0.00       0.0       0.0                          
-    0:00:03    1859.8      0.00       0.0       0.0                          
-    0:00:03    1859.8      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:02    1859.8      0.00       0.0       0.0                          
+    0:00:02    1859.8      0.00       0.0       0.0                          
+    0:00:02    1859.8      0.00       0.0       0.0                          
+    0:00:02    1859.8      0.00       0.0       0.0                          
+    0:00:02    1859.8      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
 
 
 
@@ -140,8 +140,8 @@ Information: Total 0 isolation cells are inserted. (UPF-214)
    ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
     TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
   --------- --------- --------- --------- --------- -------------------------
-    0:00:03    1689.5      0.00       0.0       0.0                          
-    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
+    0:00:02    1689.5      0.00       0.0       0.0                          
     0:00:03    1689.5      0.00       0.0       0.0                          
 
 
@@ -179,7 +179,7 @@ Report : timing
         -max_paths 1
 Design : alu
 Version: E-2010.12-SP2
-Date   : Wed Apr 30 09:30:34 2014
+Date   : Wed Apr 30 09:44:21 2014
 ****************************************
 
 Operating Conditions: TYPICAL   Library: saed90nm_typ
@@ -225,13 +225,40 @@ Wire Load Model Mode: enclosed
 
 
 1
+report_hierarchy
+ 
+****************************************
+Report : hierarchy
+Design : alu
+Version: E-2010.12-SP2
+Date   : Wed Apr 30 09:44:21 2014
+****************************************
+
+alu
+    AND2X1                    saed90nm_typ
+    INVX0                     saed90nm_typ
+    MUX21X1                   saed90nm_typ
+    MUX41X1                   saed90nm_typ
+    NAND2X0                   saed90nm_typ
+    NAND3X0                   saed90nm_typ
+    NAND4X0                   saed90nm_typ
+    NOR2X0                    saed90nm_typ
+    OA21X1                    saed90nm_typ
+    OR2X1                     saed90nm_typ
+    OR4X1                     saed90nm_typ
+    XNOR2X1                   saed90nm_typ
+    alu_DW01_addsub_0
+        FADDX1                saed90nm_typ
+        XOR2X1                saed90nm_typ
+        XOR3X1                saed90nm_typ
+1
 report_area   
  
 ****************************************
 Report : area
 Design : alu
 Version: E-2010.12-SP2
-Date   : Wed Apr 30 09:30:34 2014
+Date   : Wed Apr 30 09:44:21 2014
 ****************************************
 
 Library(s) Used:
