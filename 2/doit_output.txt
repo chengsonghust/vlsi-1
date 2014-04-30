@@ -1,0 +1,262 @@
+Model Technology ModelSim SE vlog 6.6a Compiler 2010.03 Mar 19 2010
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+           Version E-2010.12-SP2 for linux -- Feb 25, 2011
+               Copyright (c) 1988-2011 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+read_sverilog alu.sv
+Loading db file '/nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models/saed90nm_typ_pg.db'
+Loading db file '/usr/local/apps/synopsys/current_synthesis/libraries/syn/gtech.db'
+Loading db file '/usr/local/apps/synopsys/current_synthesis/libraries/syn/standard.sldb'
+  Loading link library 'saed90nm_typ'
+  Loading link library 'gtech'
+Loading sverilog file '/nfs/stak/students/b/baylesj/vlsi/2/alu.sv'
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /nfs/stak/students/b/baylesj/vlsi/2/alu.sv
+
+Statistics for case statements in always block at line 26 in file
+	'/nfs/stak/students/b/baylesj/vlsi/2/alu.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            28            |    auto/auto     |
+===============================================
+Presto compilation completed successfully.
+Current design is now '/nfs/stak/students/b/baylesj/vlsi/2/alu.db:alu'
+Loaded 1 design.
+Current design is 'alu'.
+alu
+compile
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | E-2010.12-DWBB_201012.2 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+Information: There are 5 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'alu'
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_MUX/str/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_MUX/str/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/2/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/2/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/3/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/3/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/4/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/4/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/5/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_mmux/str/5/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_add/rpl/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_NAND2/str/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_NAND2/str/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_add/rpl/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_add/cla/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_add/cla/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_inc/rpl/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_inc/rpl/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_dec/rpl/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_dec/rpl/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_NOT/str/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_NOT/str/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_addsub/rpl/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_addsub/rpl/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_addsub/cla/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_addsub/cla/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_incdec/rpl/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_incdec/rpl/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_sub/rpl/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_sub/rpl/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_sub/cla/9/saed90nm_typ_pg_1448/element.ddc could not be written.  (SYNOPT-1)
+Warning: Cache element /nfs/stak/students/b/baylesj/synopsys_cache_E-2010.12-SP2/DW01/DW01_sub/cla/9/saed90nm_typ_pg_1448_8167_4958/element.ddc could not be written.  (SYNOPT-1)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Design 'alu' has no optimization constraints set. (OPT-108)
+Information: Total 0 isolation cells are inserted. (UPF-214)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'alu_DW01_addsub_0'
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+  Structuring 'alu'
+  Mapping 'alu'
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03    1859.8      0.00       0.0       0.0                          
+    0:00:03    1859.8      0.00       0.0       0.0                          
+    0:00:03    1859.8      0.00       0.0       0.0                          
+    0:00:03    1859.8      0.00       0.0       0.0                          
+    0:00:03    1859.8      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+
+
+  Beginning Area-Recovery Phase  (cleanup)
+  -----------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1689.5      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+    0:00:03    1671.0      0.00       0.0       0.0                          
+Loading db file '/nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models/saed90nm_typ_pg.db'
+
+  Optimization Complete
+  ---------------------
+1
+report_timing
+Information: Updating graph... (UID-83)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : alu
+Version: E-2010.12-SP2
+Date   : Wed Apr 30 09:30:34 2014
+****************************************
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: opcode[0] (input port)
+  Endpoint: alu_zero (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  alu                8000                  saed90nm_typ
+  alu_DW01_addsub_0  8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  opcode[0] (in)                           0.00       0.00 r
+  U119/QN (INVX0)                          0.13       0.13 f
+  U148/QN (NAND3X0)                        0.11       0.24 r
+  U123/QN (INVX0)                          0.31       0.55 f
+  r30/ADD_SUB (alu_DW01_addsub_0)          0.00       0.55 f
+  r30/U9/Q (XOR2X1)                        0.20       0.75 r
+  r30/U1_0/CO (FADDX1)                     0.15       0.90 r
+  r30/U1_1/CO (FADDX1)                     0.13       1.03 r
+  r30/U1_2/CO (FADDX1)                     0.13       1.16 r
+  r30/U1_3/CO (FADDX1)                     0.13       1.29 r
+  r30/U1_4/CO (FADDX1)                     0.13       1.42 r
+  r30/U1_5/CO (FADDX1)                     0.13       1.55 r
+  r30/U1_6/CO (FADDX1)                     0.13       1.68 r
+  r30/U1_7/S (FADDX1)                      0.25       1.93 r
+  r30/SUM[7] (alu_DW01_addsub_0)           0.00       1.93 r
+  U92/Q (MUX41X1)                          0.14       2.07 r
+  U90/Q (MUX21X1)                          0.09       2.16 r
+  U89/Q (MUX21X1)                          0.10       2.26 r
+  U122/Q (OR4X1)                           0.12       2.39 r
+  U120/QN (NOR2X0)                         0.04       2.43 f
+  alu_zero (out)                           0.00       2.43 f
+  data arrival time                                   2.43
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+report_area   
+ 
+****************************************
+Report : area
+Design : alu
+Version: E-2010.12-SP2
+Date   : Wed Apr 30 09:30:34 2014
+****************************************
+
+Library(s) Used:
+
+    saed90nm_typ (File: /nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models/saed90nm_typ_pg.db)
+
+Number of ports:                           30
+Number of nets:                           146
+Number of cells:                          118
+Number of combinational cells:            117
+Number of sequential cells:                 0
+Number of macros:                           0
+Number of buf/inv:                         24
+Number of references:                      13
+
+Combinational area:       1592.154021
+Noncombinational area:       0.000000
+Net Interconnect area:      78.871219  
+
+Total cell area:          1592.154021
+Total area:               1671.025240
+1
+write -format verilog -hierarchy -output alu.gate.v
+Writing verilog file '/nfs/stak/students/b/baylesj/vlsi/2/alu.gate.v'.
+1
+quit!
+
+Thank you...

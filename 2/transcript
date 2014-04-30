@@ -8,19 +8,4 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# OpenFile alu.sv 
-do /nfs/stak/students/b/baylesj/vlsi/2/alu.do
-# .main_pane.objects.interior.cs.body.tree
-# ** Error: (vish-4008) Object 'in_a' not found.
-# Error in macro /nfs/stak/students/b/baylesj/vlsi/2/alu.do line 4
-# ** Error: (vish-4008) Object 'in_a' not found.
-# 
-#     while executing
-# "vsimcmd::force in_a 8'd40"
-#     ("uplevel" body line 1)
-#     invoked from within
-# "uplevel vsimcmd::force $args"
-#     (procedure "force" line 13)
-#     invoked from within
-# "force in_a 8'd40"
-quit
+# OpenFile alu.gate.v 
