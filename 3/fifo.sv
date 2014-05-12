@@ -20,19 +20,25 @@ parameter pointer_width = 3;  // width = ceil(log_2(depth))
 reg [pointer_width-1:0] rd_pointer, wr_pointer;
 reg [pointer_width-1:0] pointer_remaining;
 
+// use internal full and empty for assignments
+reg full_ps, empty_ps;
+
 // use an internal memory so we can read and write at the same time
 reg [width-1:0] memory[depth-1:0];
+
+assign full = full_ps;
+assign empty = empty_ps;
 
 // writing to memory
 always @(posedge wr_clk) begin
 	// synchronize deassert with wr_clk
 	if (pointer_remaining < (depth - 1)) begin
-		full <= 1'b0;
+		full_ps <= 1'b0;
 	end
 
 	if (wr) begin
 		if (pointer_remaining == (depth - 1)) begin
-			full <= 1'b1;
+			full_ps <= 1'b1;
 			memory[wr_pointer] <= data_in;
 			if (wr_pointer < depth) begin
 				wr_pointer <= wr_pointer + 1;
@@ -47,12 +53,12 @@ end
 always @(posedge rd_clk) begin
 	// synchronize deassert with rd_clk
 	if (pointer_remaining != 0) begin
-		empty <= 1'b0;
+		empty_ps <= 1'b0;
 	end
 
 	if (rd) begin
 		if (pointer_remaining == 0) begin
-			empty <= 1'b1;
+			empty_ps <= 1'b1;
 			data_out <= memory[rd_pointer];
 			// rollover the pointer
 			if (rd_pointer < depth) begin
