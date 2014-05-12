@@ -2,7 +2,7 @@
 
 if [ ! -d "work" ] ; then 
   echo "work does not exist, making it"
-  vlib ./work
+  vlib work
 fi
 
 if [ -s "fadder.sv" ] ; then 

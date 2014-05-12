@@ -1,0 +1,5 @@
+# vsim -do fifo.do -c -quiet -t 1ps fifo 
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: Failed to find design unit work.fifo.
+# Optimization failed
+# Error loading design

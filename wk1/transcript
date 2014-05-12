@@ -9,6 +9,7 @@
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
 # vsim -do fadder.do fadder 
-# ** Error: (vsim-19) Failed to access library 'work' at "work".
-# No such file or directory. (errno = ENOENT)
-# Error loading design
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.fadder(fast)
+# Break key hit 

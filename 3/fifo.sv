@@ -32,7 +32,7 @@ always @(posedge wr_clk) begin
 			if (wr_pointer < depth) begin
 				wr_pointer <= wr_pointer + 1;
 			end else begin
-				wr_pointer <= 0
+				wr_pointer <= 0;
 			end
 		end
 	end
