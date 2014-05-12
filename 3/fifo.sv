@@ -41,10 +41,9 @@ end
 // reading from memory
 always @(posedge rd_clk) begin
 	if (rd) begin
-		empty = (pointer_remaining = 0);
+		empty = (pointer_remaining == 0);
 		if (!empty) begin
 			data_out <= memory[rd_pointer];
-
 			// rollover the pointer
 			if (rd_pointer < depth) begin
 				rd_pointer <= rd_pointer + 1;
