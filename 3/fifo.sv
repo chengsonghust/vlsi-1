@@ -1,3 +1,9 @@
+//        Author: Jordan Bayles
+//    Assignment: HW3
+//        Course: ECE 474 - VLSI System Design
+// Last Modified: Mon May 12 12:44:10 PDT 2014
+//   Description: 8-bit, 8-byte wide FIFO
+
 module fifo (
 	input wr_clk,              // write clock
 	input rd_clk,              // read clock
