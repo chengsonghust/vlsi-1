@@ -17,17 +17,22 @@ parameter pointer_width = 3;  // width = ceil(log_2(depth))
 
 /// internals
 // pointers
-wire [pointer_width-1:0] rd_pointer, wr_pointer;
-reg  [pointer_width-1:0] pointer_remaining;
+reg [pointer_width-1:0] rd_pointer, wr_pointer;
+reg [pointer_width-1:0] pointer_remaining;
 
 // use an internal memory so we can read and write at the same time
-reg  [width-1:0] memory[depth-1:0];
+reg [width-1:0] memory[depth-1:0];
 
 // writing to memory
 always @(posedge wr_clk) begin
+	// synchronize deassert with wr_clk
+	if (pointer_remaining < (depth - 1)) begin
+		full <= 1'b0;
+	end
+
 	if (wr) begin
-		full = (pointer_remaining == (depth - 1));
-		if (!full) begin
+		if (pointer_remaining == (depth - 1)) begin
+			full <= 1'b1;
 			memory[wr_pointer] <= data_in;
 			if (wr_pointer < depth) begin
 				wr_pointer <= wr_pointer + 1;
@@ -40,9 +45,14 @@ end
 
 // reading from memory
 always @(posedge rd_clk) begin
+	// synchronize deassert with rd_clk
+	if (pointer_remaining != 0) begin
+		empty <= 1'b0;
+	end
+
 	if (rd) begin
-		empty = (pointer_remaining == 0);
-		if (!empty) begin
+		if (pointer_remaining == 0) begin
+			empty <= 1'b1;
 			data_out <= memory[rd_pointer];
 			// rollover the pointer
 			if (rd_pointer < depth) begin
@@ -69,7 +79,9 @@ end
 
 // can reset at any time
 always @(negedge reset_n) begin
-	memory <= 0;
+	for (rd_pointer = 0; rd_pointer < depth; rd_pointer = rd_pointer + 1) begin
+		memory[rd_pointer] <= 0;
+	end
 	rd_pointer <= 0;
 	wr_pointer <= 0;
 end
