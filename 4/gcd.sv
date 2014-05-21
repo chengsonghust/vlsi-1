@@ -19,7 +19,7 @@ module gcd#(parameter nbits = 32)
 // operand registries
 reg [nbits-1:0] reg_a, reg_b;                // manipulable operands
 reg [nbits-1:0] tmp;                         // temporary register
-reg reg_a_en, reg_b_en;                      // enable registries 
+reg reg_a_en, reg_b_en;                      // enable registries
 
 // calculation registries
 reg a_lt_b;                                  // is reg_a < reg_b?
@@ -29,12 +29,13 @@ reg b_neq_zero;                              // is reg_b != 0 ?
 wire [nbits-1:0] sub_out;                    // output of subtraction
 
 // state machine registry
-enum {
+typedef enum {
   IDLE,
   RUNNING,
   DONE,
   UNKNOWN
-  } gcd_ps, gcd_ns;
+  } state;
+state gcd_ps, gcd_ns;
 
 enum {
   REG_A_SEL_X,
@@ -50,9 +51,9 @@ enum {
   } reg_b_sel;
 
 // assignments
-assign b_neq_zero = (reg_b != 0) ? 1'b1 : 1'b0;
-assign a_lt_b = (reg_a < reg_b) ? 1'b1 : 1'b0;
-assign sub_out = (reg_a - reg_b) ? 1'b1 : 1'b0;
+assign b_neq_zero = (reg_b != 0);
+assign a_lt_b = (reg_a < reg_b);
+assign sub_out = (reg_a - reg_b);
 assign result = reg_a;
 
 // internal combinatorial logic
@@ -61,7 +62,7 @@ always @(*) begin
   // mux for setting value of reg_a
   if (reg_a_en) begin
     case (reg_a_sel)
-    REG_A_SEL_IN: 
+    REG_A_SEL_IN:
       reg_a = a_in;
     REG_A_SEL_SUB:
       reg_a = sub_out;
@@ -84,9 +85,8 @@ always @(*) begin
 end
 
 // finite state machine control
-always_ff @(posedge clk) begin
+always @(*) begin
   // defaults
-  //start = 1'b0;
   reg_a_sel = REG_A_SEL_X;
   reg_a_en = 1'b0;
   reg_b_sel = REG_B_SEL_X;
@@ -121,12 +121,14 @@ always_ff @(posedge clk) begin
 end
 
 // advance the state machine
-assign gcd_ns = state_machine(gcd_ps, start, b_neq_zero);
+assign gcd_ns = state'(state_machine(gcd_ps, start, b_neq_zero));
 function [nbits-1:0] state_machine;
-  input [nbits-1:0] ps;
+  input state ps;
   input start;
   input b_neq_zero;
 
+  // default stay in current state
+  state_machine = ps;
   case (ps)
   IDLE:
     if (start)
@@ -136,8 +138,6 @@ function [nbits-1:0] state_machine;
       state_machine = DONE;
   DONE:
     // only assert for one cycle
-    state_machine = IDLE;
-  default:
     state_machine = IDLE;
   endcase
 endfunction
