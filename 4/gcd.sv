@@ -2,10 +2,10 @@
 //   Desc: ECE 474 - HW 4
 //  refer: http://www.angelfire.com/in/rajesh52/verilogvhdl.html
 //         http://cseweb.ucsd.edu/classes/sp09/cse141L/Slides/02-Verilog2.pdf
-//         
+//
 // FSM ref:http://www.asic-world.com/tidbits/verilog_fsm.html
 
-// Greatest Common Denominator Engine Module 
+// Greatest Common Denominator Engine Module
 module gcd#(parameter nbits = 32)
            (input [nbits-1:0] a_in,          //operand a
             input [nbits-1:0] b_in,          //operand b
@@ -14,7 +14,7 @@ module gcd#(parameter nbits = 32)
             input clk,                       //clock
             output reg [nbits-1:0] result,   //output of GCD engine
             output reg done                  //validates output value
-            );          
+            );
 
 // operand registries
 reg [nbits-1:0] reg_a, reg_b;                // manipulable operands
@@ -24,21 +24,30 @@ reg reg_a_en, reg_b_en;                      // enable registries
 // calculation registries
 reg a_lt_b;                                  // is reg_a < reg_b?
 reg b_neq_zero;                              // is reg_b != 0 ?
-reg [1:0] reg_a_sel;                         // mux for reg_a
-reg reg_b_sel;                               // mux for reg_b
 
 // wires
 wire [nbits-1:0] sub_out;                    // output of subtraction
 
-// internal constants
-parameter PS_NS_SIZE = 2;
-parameter IDLE = 2'b01, RUNNING = 2'b10, DONE = 2'b11;
-parameter REG_A_SEL_X = 2'b01, REG_A_SEL_IN = 2'b10, REG_A_SEL_SUB = 2'b11, REG_A_SEL_B = 2'b00;
-parameter REG_B_SEL_X = 1'b0, REG_B_SEL_IN = 1'b0, REG_B_SEL_A = 1'b1;
-
 // state machine registry
-reg [PS_NS_SIZE-1:0] gcd_ps;                // present state
-wire[PS_NS_SIZE-1:0] gcd_ns;                // next state
+enum {
+  IDLE,
+  RUNNING,
+  DONE,
+  UNKNOWN
+  } gcd_ps, gcd_ns;
+
+enum {
+  REG_A_SEL_X,
+  REG_A_SEL_IN,
+  REG_A_SEL_SUB,
+  REG_A_SEL_B
+  } reg_a_sel;
+
+enum {
+  REG_B_SEL_X,
+  REG_B_SEL_IN,
+  REG_B_SEL_A
+  } reg_b_sel;
 
 // assignments
 assign b_neq_zero = (reg_b != 0) ? 1'b1 : 1'b0;
@@ -92,22 +101,22 @@ always_ff @(posedge clk) begin
     reg_b_sel = REG_B_SEL_IN;
     reg_b_en = 1'b1;
   end
-  
+
   RUNNING: begin
     if (a_lt_b) begin
       reg_a_sel = REG_A_SEL_B;
       reg_a_en = 1'b1;
       reg_b_sel = REG_B_SEL_A;
       reg_b_en = 1'b1;
-      
+
     end else if (b_neq_zero) begin
       reg_a_sel = REG_A_SEL_SUB;
       reg_a_en = 1'b1;
     end
   end
-  
+
   DONE:
-    done = 1'b1;  
+    done = 1'b1;
   endcase
 end
 
@@ -117,7 +126,7 @@ function [nbits-1:0] state_machine;
   input [nbits-1:0] ps;
   input start;
   input b_neq_zero;
-  
+
   case (ps)
   IDLE:
     if (start)
@@ -135,7 +144,7 @@ endfunction
 
 // move to next state at clock
 always @(posedge clk) begin
-  gcd_ps <= gcd_ns;  
+  gcd_ps <= gcd_ns;
 end
 
 // async active low reset
