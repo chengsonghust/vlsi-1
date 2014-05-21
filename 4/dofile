@@ -1,0 +1,35 @@
+add wave \
+{sim:/gcd/start } \
+{sim:/gcd/reset_n } \
+{sim:/gcd/clk } \
+{sim:/gcd/gcd_ps } \
+{sim:/gcd/gcd_ns } \
+{sim:/gcd/reg_a_sel } \
+{sim:/gcd/reg_b_sel } \
+{sim:/gcd/a_lt_b } \
+{sim:/gcd/b_neq_zero } \
+{sim:/gcd/done } \
+{sim:/gcd/result } \
+{sim:/gcd/reg_a } \
+{sim:/gcd/reg_b } \
+{sim:/gcd/a_in } \
+{sim:/gcd/b_in } 
+force reset_n 0
+force start 0
+force a_in 10#20
+force b_in 10#40
+force -freeze sim:/gcd/clk 1 0, 0 {50 ns} -r 100
+run 200
+run 50
+force reset_n 1
+run 200
+force start 1
+run 100
+force start 0
+run 1000
+force a_in 10#420
+force b_in 10#340
+force start 1
+run 100
+force start 0
+run 2000

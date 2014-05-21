@@ -1,0 +1,41 @@
+// Author: Jordan Bayles
+//   Desc: ECE 474 - HW 4
+//  refer: http://www.angelfire.com/in/rajesh52/verilogvhdl.html
+
+// Greatest Common Denominator Engine Module 
+module gcd#(parameter nbits = 32)
+	   (input [nbits-1:0] a_in,          //operand a
+            input [nbits-1:0] b_in,          //operand b
+            input start,                     //validates the input data
+            input reset_n,                   //reset
+            input clk,                       //clock
+            output reg [nbits-1:0] result,   //output of GCD engine
+            output reg done                  //validates output value
+            );          
+
+reg [nbits-1:0] a, b;                        // manipulable operands
+reg [nbits-1:0] tmp;                         // temporary register
+
+always @(posedge clk) begin
+	if (start == 1) begin
+		a = a_in;
+		b = b_in;
+	
+		if ((a != 0) && (b != 0)) begin
+			while (b != 0) begin
+				while (a >= b) begin
+					a = a - b;
+					tmp = a;
+					a = b;
+					b = tmp;
+				end
+			end
+		end else begin
+			result = a;
+			a = 0;
+			done = 1;
+		end
+	end
+end
+		
+endmodule

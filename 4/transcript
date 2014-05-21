@@ -1,0 +1,49 @@
+# //  ModelSim SE 6.6a Mar 19 2010 Linux 2.6.32-431.1.2.0.1.el6.x86_64
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# OpenFile gcd.sv 
+vsim work.gcd
+# vsim work.gcd 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.gcd(fast)
+do dofile
+# ** Error: (vish-4014) No objects found matching '/gcd/gcd_ps '.
+# (vish-4014) No objects found matching '/gcd/gcd_ns '.
+# (vish-4014) No objects found matching '/gcd/reg_a_sel '.
+# (vish-4014) No objects found matching '/gcd/reg_b_sel '.
+# (vish-4014) No objects found matching '/gcd/a_lt_b '.
+# (vish-4014) No objects found matching '/gcd/b_neq_zero '.
+# (vish-4014) No objects found matching '/gcd/reg_a '.
+# (vish-4014) No objects found matching '/gcd/reg_b '.
+# Error in macro ./dofile line 16
+# (vish-4014) No objects found matching '/gcd/gcd_ps '.
+# (vish-4014) No objects found matching '/gcd/gcd_ns '.
+# (vish-4014) No objects found matching '/gcd/reg_a_sel '.
+# (vish-4014) No objects found matching '/gcd/reg_b_sel '.
+# (vish-4014) No objects found matching '/gcd/a_lt_b '.
+# (vish-4014) No objects found matching '/gcd/b_neq_zero '.
+# (vish-4014) No objects found matching '/gcd/reg_a '.
+# (vish-4014) No objects found matching '/gcd/reg_b '.
+#     while executing
+# "add wave \
+# {sim:/gcd/start } \
+# {sim:/gcd/reset_n } \
+# {sim:/gcd/clk } \
+# {sim:/gcd/gcd_ps } \
+# {sim:/gcd/gcd_ns } \
+# {sim:/gcd/reg_a_sel } \
+# {sim:/gcd/reg..."
+# Updating msgviewer database...
+vlog -reportprogress 300 -work work /nfs/stak/students/b/baylesj/vlsi/4/gcd.sv
+# Model Technology ModelSim SE vlog 6.6a Compiler 2010.03 Mar 19 2010
+# -- Compiling module gcd
+# ** Error: /nfs/stak/students/b/baylesj/vlsi/4/gcd.sv(50): Undefined variable: a.
+# ** Error: /nfs/stak/students/b/baylesj/vlsi/4/gcd.sv(50): Undefined variable: b.
