@@ -18,8 +18,6 @@ module gcd#(parameter nbits = 32)
 
 // operand registries
 reg [nbits-1:0] reg_a, reg_b;                // manipulable operands
-reg [nbits-1:0] tmp;                         // temporary register
-reg reg_a_en, reg_b_en;                      // enable registries
 
 // calculation registries
 reg a_lt_b;                                  // is reg_a < reg_b?
@@ -60,58 +58,47 @@ assign result = reg_a;
 always @(*) begin
 
   // mux for setting value of reg_a
-  if (reg_a_en) begin
-    case (reg_a_sel)
-    REG_A_SEL_IN:
-      reg_a = a_in;
-    REG_A_SEL_SUB:
-      reg_a = sub_out;
-    REG_A_SEL_B:
-      reg_a = reg_b;
-    REG_A_SEL_X:
-      reg_a = a_in;
-    endcase
-  end
+  case (reg_a_sel)
+  REG_A_SEL_IN:
+    reg_a = a_in;
+  REG_A_SEL_SUB:
+    reg_a = sub_out;
+  REG_A_SEL_B:
+    reg_a = reg_b;
+  REG_A_SEL_X:
+    reg_a = a_in;
+  endcase
 
   // mux for setting value of reg_b
-  if (reg_b_en) begin
-    case (reg_b_sel)
-    REG_B_SEL_IN:
-      reg_b = b_in;
-    REG_B_SEL_A:
-      reg_b = reg_a;
-    endcase
-  end
+  case (reg_b_sel)
+  REG_B_SEL_IN:
+    reg_b = b_in;
+  REG_B_SEL_A:
+    reg_b = reg_a;
+  endcase
 end
 
 // finite state machine control
 always @(*) begin
   // defaults
-  reg_a_sel = REG_A_SEL_X;
-  reg_a_en = 1'b0;
-  reg_b_sel = REG_B_SEL_X;
-  reg_b_en = 1'b0;
+  reg_a_sel <= REG_A_SEL_X;
+  reg_b_sel <= REG_B_SEL_X;
   done = 1'b0;
 
   // case dependent values
   case (gcd_ps)
   IDLE: begin
-    reg_a_sel = REG_A_SEL_IN;
-    reg_a_en = 1'b1;
-    reg_b_sel = REG_B_SEL_IN;
-    reg_b_en = 1'b1;
+    reg_a_sel <= REG_A_SEL_IN;
+    reg_b_sel <= REG_B_SEL_IN;
   end
 
   RUNNING: begin
     if (a_lt_b) begin
-      reg_a_sel = REG_A_SEL_B;
-      reg_a_en = 1'b1;
-      reg_b_sel = REG_B_SEL_A;
-      reg_b_en = 1'b1;
+      reg_a_sel <= REG_A_SEL_B;
+      reg_b_sel <= REG_B_SEL_A;
 
     end else if (b_neq_zero) begin
-      reg_a_sel = REG_A_SEL_SUB;
-      reg_a_en = 1'b1;
+      reg_a_sel <= REG_A_SEL_SUB;
     end
   end
 
@@ -144,12 +131,12 @@ endfunction
 
 // move to next state at clock
 always @(posedge clk) begin
-  gcd_ps <= gcd_ns;
+  gcd_ps = gcd_ns;
 end
 
 // async active low reset
 always @(negedge reset_n) begin
-  gcd_ps <= IDLE;
+  gcd_ps = IDLE;
 end
 
 endmodule
