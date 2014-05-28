@@ -5,17 +5,10 @@ set hdlin_auto_save_templates true
 set hdlin_check_no_latch      true
 
 # Tell DC where to look for files
-lappend search_path ../libs
-set synop_lib /nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm
-# Set up libraries
-set target_library $synop_lib/Digital_Standard_Cell_Library/synopsys/models/saed90nm_typ_lt_pg.db
-set link_library "* $target_library"
-read_sverilog  rtl_src/gcd.sv 
+read_sverilog  rtl_src/gcd.sv
 
-current_design gcd 
+current_design gcd
 link
-
-##### constraints are below #####
 
 #erase all attributes and constrains from the current design
 reset_design
@@ -31,15 +24,15 @@ set_wire_load_mode top
 
 # Define the clock period as 2ns and clock port (2ns clock period)
 # Give the clock the name "my_clock"
-create_clock -period 2 -name my_clock [get_ports clk] 
+create_clock -period 2.0 -name my_clock [get_ports clk] 
 
 # Set the clock uncertainty relative to my_clock as +/- 20pS
-set_clock_uncertainty -setup 0.02 [get_clocks my_clock]
-set_clock_uncertainty -hold 0.02 [get_clocks my_clock]
+set_clock_uncertainty -setup 0.020 [get_clocks my_clock]
+set_clock_uncertainty -hold 0.020 [get_clocks my_clock]
 
 # set the "input valid" delay to 1.0nS
 # exclude clock from the inputs expecting the delay
-set_input_delay 1 -max -clock my_clock [remove_from_collection [all_inputs] [get_ports clk]]
+set_input_delay 1.0 -max -clock my_clock [remove_from_collection [all_inputs] [get_ports clk]]
 
 # set the setup time requirements for the next block to 1nS
 # exclude clock from the inputs expecting the delay
@@ -47,17 +40,17 @@ set_output_delay 1.0 -max -clock my_clock [all_outputs]
 
 #The next two are hard to get right, so I'll be nice!
 #set the fastest input data arrival time to check for hold time changes to 100pS
-set_input_delay -min 0.100 -clock my_clock [remove_from_collection [all_inputs] [get_ports clk]]
+set_input_delay -min 0.1 -clock my_clock [remove_from_collection [all_inputs] [get_ports clk]]
 
 # set the hold time requirements for the next block to 150pS
 set_output_delay -min -0.150  -clock my_clock [all_outputs]
 
 # Indicate the drive characteristics of what drives the inputs:
 # Use SDFFARX1 as the driving cell
-set_driving_cell -lib_cell SDFFARX1 [remove_from_collection [all_inputs] [get_ports clk]]
+set_driving_cell -lib_cell SDFFARX1 [remove_from_collection [all_inputs] [get_ports clk]] 
 
 # Indicate the capacitive loading on the outputs equal to 5 inv_2 inverter inputs
-set_load [expr 5 * [load_of saed90nm_typ_lt/INVX2/IN]] [all_outputs]
+set_load [expr 5 * [load_of saed90nm_typ/INVX2/IN]] [all_outputs]
 
 # Compile with completely disolved design
 compile -ungroup_all
@@ -69,7 +62,7 @@ set current_design  gcd
 report_area    > reports/area
 
 # Generate timing report for worst case path
-report_timing  > reports/timing
+report_timing  > reports/delay
 
 # Generate timing report for hold time 
 report_constraint -min_delay > reports/hold_error

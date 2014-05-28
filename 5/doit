@@ -32,7 +32,7 @@ vsim tb -do dofile -quiet -c -t 1ps
 mv vectors/output_data vectors/output_data_rtl
 
 #diff output_data and golden_data
-! diff vectors/output_data_rl vectors/golden_data --brief > reports/rtl_miscompares
+diff -B vectors/output_data_rl vectors/golden_data --brief > reports/rtl_miscompares
 
 #report the results
 if [ $? == 0 ] ; then
@@ -71,10 +71,10 @@ vsim tb -do dofile  +nowarnTFMPC -quiet -c -t 1ps
 mv vectors/output_data vectors/output_data_gate
 
 #diff output_data and golden_data
-! diff vectors/output_data_gate vectors/golden_data --brief > reports/gate_miscompares
+diff -B vectors/output_data_gate vectors/golden_data --brief > reports/gate_miscompares
 
 #report the results
-if [ $? == 0 ] ; then
+if [ $? -e 0 ] ; then
   echo -n "no "
 fi
 echo "errors detected in gate output"
@@ -86,10 +86,10 @@ vsim tb -do dofile +nowarnTFMPC -quiet -c -sdfmax /tb/gcd_0=sdfout/gcd.gate.sdf 
 mv vectors/output_data vectors/output_data_gate_sdf
 
 #diff output_data and golden_data
-! diff vectors/output_data_gate_sdf vectors/golden_data --brief > reports/gate_sdf_miscompares
+diff -B vectors/output_data_gate_sdf vectors/golden_data --brief > reports/gate_sdf_miscompares
 
 #report the results
-if [ $? == 0 ] ; then
+if [ $? -e 0 ] ; then
   echo -n "no "
 fi
 echo "errors detected in sdf/gate output"

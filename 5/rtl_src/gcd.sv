@@ -36,16 +36,16 @@ typedef enum {
 state gcd_ps, gcd_ns;
 
 enum {
-  REG_A_SEL_X,
-  REG_A_SEL_IN,
-  REG_A_SEL_SUB,
-  REG_A_SEL_B
+  REG_A_HOLD,
+  REG_A_IN,
+  REG_A_SUB,
+  REG_A_B
   } reg_a_sel;
 
 enum {
-  REG_B_SEL_X,
-  REG_B_SEL_IN,
-  REG_B_SEL_A
+  REG_B_HOLD,
+  REG_B_IN,
+  REG_B_A
   } reg_b_sel;
 
 // assignments
@@ -54,89 +54,104 @@ assign a_lt_b = (reg_a < reg_b);
 assign sub_out = (reg_a - reg_b);
 assign result = reg_a;
 
-// internal combinatorial logic
-always @(*) begin
-
+// logic for registers
+always_ff @(posedge clk) begin
   // mux for setting value of reg_a
-  case (reg_a_sel)
-  REG_A_SEL_IN:
-    reg_a = a_in;
-  REG_A_SEL_SUB:
-    reg_a = sub_out;
-  REG_A_SEL_B:
-    reg_a = reg_b;
-  REG_A_SEL_X:
-    reg_a = a_in;
+  unique case (reg_a_sel)
+  REG_A_IN:
+    reg_a <= a_in;
+  REG_A_SUB:
+    reg_a <= sub_out;
+  REG_A_B:
+    reg_a <= reg_b;
+  REG_A_HOLD:
+    reg_a <= reg_a;
   endcase
 
   // mux for setting value of reg_b
-  case (reg_b_sel)
-  REG_B_SEL_IN:
-    reg_b = b_in;
-  REG_B_SEL_A:
-    reg_b = reg_a;
+  unique case (reg_b_sel)
+  REG_B_IN:
+    reg_b <= b_in;
+  REG_B_A:
+    reg_b <= reg_a;
+  REG_B_HOLD:
+    reg_b <= reg_b;
   endcase
 end
 
 // finite state machine control
-always @(*) begin
-  // defaults
-  reg_a_sel <= REG_A_SEL_X;
-  reg_b_sel <= REG_B_SEL_X;
-  done = 1'b0;
+always_comb begin
+  if (!reset_n) begin
+    reg_a_sel = REG_A_HOLD;
+    reg_b_sel = REG_B_HOLD;
+    done = 1'b0;
+  end else begin
 
-  // case dependent values
-  case (gcd_ps)
-  IDLE: begin
-    reg_a_sel <= REG_A_SEL_IN;
-    reg_b_sel <= REG_B_SEL_IN;
-  end
-
-  RUNNING: begin
-    if (a_lt_b) begin
-      reg_a_sel <= REG_A_SEL_B;
-      reg_b_sel <= REG_B_SEL_A;
-
-    end else if (b_neq_zero) begin
-      reg_a_sel <= REG_A_SEL_SUB;
+    // case dependent values
+    case (gcd_ps)
+    IDLE: begin
+      if (start) begin
+        reg_a_sel = REG_A_IN;
+        reg_b_sel = REG_B_IN;
+      end else begin
+        reg_a_sel = REG_A_HOLD;
+        reg_b_sel = REG_B_HOLD;
+      end
     end
+
+    RUNNING: begin
+      if (a_lt_b) begin
+        reg_a_sel = REG_A_B;
+        reg_b_sel = REG_B_A;
+      end else if (b_neq_zero) begin
+        reg_a_sel = REG_A_SUB;
+        reg_b_sel = REG_B_HOLD;
+      end else begin
+        reg_a_sel = REG_A_HOLD;
+        reg_b_sel = REG_B_HOLD;
+    end
+
+    DONE: begin
+      reg_a_sel = REG_A_HOLD;
+      reg_b_sel = REG_B_HOLD;
+      done = 1'b1;
+    end
+
+    endcase
   end
-
-  DONE:
-    done = 1'b1;
-  endcase
 end
 
-// advance the state machine
-assign gcd_ns = state'(state_machine(gcd_ps, start, b_neq_zero));
-function [nbits-1:0] state_machine;
-  input state ps;
-  input start;
-  input b_neq_zero;
+// determine next state
+always_comb begin
+  if (!reset_n) begin
+    gcd_ns = UNKNOWN;
+  end else begin
 
-  // default stay in current state
-  state_machine = ps;
-  case (ps)
-  IDLE:
-    if (start)
-      state_machine = RUNNING;
-  RUNNING:
-    if (!b_neq_zero)
-      state_machine = DONE;
-  DONE:
-    // only assert for one cycle
-    state_machine = IDLE;
-  endcase
-endfunction
-
-// move to next state at clock
-always @(posedge clk) begin
-  gcd_ps = gcd_ns;
+    // default is to keep state
+    gcd_ns = gcd_ps;
+    case (gcd_ps)
+      IDLE: begin
+        if (start)
+          gcd_ns = RUNNING;
+      end
+      RUNNING: begin
+        if (!b_neq_zero)
+          gcd_ns = DONE;
+      end
+      DONE: begin
+        gcd_ns = IDLE;
+      end
+    endcase
+  end
 end
 
-// async active low reset
-always @(negedge reset_n) begin
-  gcd_ps = IDLE;
+// move to next state
+always_ff @(posedge clk, negedge reset_n) begin
+  if (!reset_n) begin
+    gcd_ps <= IDLE;
+  end else begin
+    gcd_ps = gcd_ns;
+  end
 end
 
 endmodule
