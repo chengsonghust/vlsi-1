@@ -5,8 +5,9 @@ if [ ! -s vectors ]; then
   mkdir vectors
 fi
 
-##if......
-
+if [ ! -s reports]; then
+  mkdir reports
+fi
 
 #remove previous results from /vectors and /reports
 #rm.....
@@ -14,6 +15,9 @@ fi
 #rm.....
 
 #check for work directory and make if necessary
+if [ ! -d "work" ] ; then
+  vlib work
+fi
 
 #compile verilog modules
 vlog rtl_src/gcd.sv
@@ -33,6 +37,9 @@ vsim tb -do dofile -quiet -c -t 1ps
 #compile synthesis library into work if needed
 
 #synthesize the design using dc_syn and redirect output to the logfile
+if [ -s "bin/dc_syn" ] ; then
+	dc_shell-xg-t -f bin/dc_syn > logs/synth_log
+fi
 
 #check for latches in synthesized design
 ##grep.....
@@ -52,6 +59,7 @@ vlog vlogout/gcd.gate.v  -work work
 vsim tb -do dofile  +nowarnTFMPC -quiet -c -t 1ps
 
 #rename the output_data
+mv vectors/output_data vectors/output_data.gate
 
 #remove the old output_data file
 
