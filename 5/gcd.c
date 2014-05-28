@@ -89,8 +89,8 @@ void stream_gcd()
 	struct data cur;
 	while (fscanf(in, "%d %d", &cur.a, &cur.b) > 0) {
 		find_gcd(&cur);
-		printf("%10d, %10d -> %10d\n", cur.a, cur.b, cur.gcd);
-		fprintf(out, "%d\n", cur.gcd);
+		fprintf(out, "a_in: %d, b_in %d, result = %d\n",
+		        cur.a, cur.b, cur.gcd);
 	}
 
 	fclose(in);

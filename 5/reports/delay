@@ -1,0 +1,83 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : gcd
+Version: E-2010.12-SP2
+Date   : Wed May 28 11:42:56 2014
+****************************************
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: top
+
+  Startpoint: reg_b_reg[1]
+              (rising edge-triggered flip-flop clocked by my_clock)
+  Endpoint: reg_a_reg[2]
+            (rising edge-triggered flip-flop clocked by my_clock)
+  Path Group: my_clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  gcd                8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock my_clock (rise edge)               0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  reg_b_reg[1]/CLK (DFFX1)                 0.00       0.00 r
+  reg_b_reg[1]/QN (DFFX1)                  0.17       0.17 r
+  U187/QN (INVX2)                          0.06       0.23 f
+  U466/Q (AND2X1)                          0.07       0.31 f
+  U565/QN (OAI22X2)                        0.16       0.46 r
+  U160/QN (OAI21X1)                        0.12       0.58 f
+  U145/QN (NAND2X2)                        0.03       0.61 r
+  U144/QN (NAND2X2)                        0.04       0.65 f
+  U566/QN (NAND2X4)                        0.03       0.69 r
+  U140/QN (NAND2X2)                        0.02       0.71 f
+  U248/Q (AND3X1)                          0.10       0.81 f
+  U167/QN (NOR2X2)                         0.04       0.85 r
+  U339/QN (NOR2X4)                         0.03       0.88 f
+  U338/QN (NOR2X4)                         0.03       0.91 r
+  U265/QN (NOR2X4)                         0.03       0.95 f
+  U262/QN (NOR2X4)                         0.04       0.98 r
+  U567/QN (NOR2X4)                         0.03       1.01 f
+  U568/QN (NOR2X4)                         0.03       1.04 r
+  U569/QN (NAND2X4)                        0.03       1.07 f
+  U465/QN (INVX4)                          0.02       1.10 r
+  U570/QN (NOR2X4)                         0.03       1.12 f
+  U571/QN (NOR2X4)                         0.03       1.15 r
+  U572/QN (NAND2X4)                        0.03       1.19 f
+  U480/QN (INVX4)                          0.02       1.21 r
+  U573/QN (NOR2X4)                         0.03       1.24 f
+  U574/QN (NOR2X4)                         0.03       1.27 r
+  U575/QN (NAND2X4)                        0.03       1.30 f
+  U576/QN (NOR2X4)                         0.03       1.33 r
+  U577/QN (NOR2X4)                         0.03       1.36 f
+  U578/QN (NAND2X4)                        0.04       1.40 r
+  U169/Q (OA21X1)                          0.13       1.53 r
+  U185/QN (NAND2X2)                        0.06       1.59 f
+  U221/QN (INVX4)                          0.05       1.63 r
+  U490/Q (NBUFFX2)                         0.09       1.73 r
+  U336/Q (AND2X1)                          0.08       1.81 r
+  U194/QN (NOR2X0)                         0.05       1.86 f
+  U353/QN (NAND2X1)                        0.04       1.90 r
+  reg_a_reg[2]/D (DFFX1)                   0.00       1.90 r
+  data arrival time                                   1.90
+
+  clock my_clock (rise edge)               2.00       2.00
+  clock network delay (ideal)              0.00       2.00
+  clock uncertainty                       -0.02       1.98
+  reg_a_reg[2]/CLK (DFFX1)                 0.00       1.98 r
+  library setup time                      -0.08       1.90
+  data required time                                  1.90
+  -----------------------------------------------------------
+  data required time                                  1.90
+  data arrival time                                  -1.90
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1

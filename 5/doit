@@ -3,7 +3,7 @@
 synop_lib="/nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm/Digital_Standard_Cell_Library/verilog"
 
 #make directories needed if they don't exist
-dirs = "bin logs reports sdfout vectors vlogout"
+dirs="bin logs reports sdfout vectors vlogout"
 
 for dir in $dirs
 do
@@ -11,6 +11,11 @@ do
     mkdir $dir
   fi
 done
+
+#generate golden cases
+gcc gcd.c -o gcd
+./gcd
+rm ./gcd
 
 #remove previous results from /vectors and /reports
 rm -f /reports/*
@@ -32,7 +37,7 @@ vsim tb -do dofile -quiet -c -t 1ps
 mv vectors/output_data vectors/output_data_rtl
 
 #diff output_data and golden_data
-diff -B vectors/output_data_rl vectors/golden_data --brief > reports/rtl_miscompares
+diff -B vectors/output_data_rtl vectors/golden_data --brief > reports/rtl_miscompares
 
 #report the results
 if [ $? == 0 ] ; then
@@ -41,8 +46,8 @@ fi
 echo "errors detected in rtl output"
 
 #compile synthesis library into work if needed
-if ! grep --quiet AND2X1.v ./work/_info ; then
-  vlog $synop_lib/*  -work work
+if ! grep --quiet $synop_lib ./work/_info ; then
+  vlog $synop_lib/* -work work
 fi
 
 #synthesize the design using dc_syn and redirect output to the logfile
@@ -62,10 +67,10 @@ sed '/(HOLD (posedge SETB)/d' < sdfout/$$tempfile    > sdfout/gcd.gate.sdf
 rm sdfout/$$tempfile
 
 #compile the gate level gcd
-vlog vlogout/gcd.gate.v  -work work
+vlog vlogout/gcd.gate.v -work work
 
 #simulate gate-level gcd
-vsim tb -do dofile  +nowarnTFMPC -quiet -c -t 1ps
+vsim tb -do dofile +nowarnTFMPC -quiet -c -t 1ps
 
 #rename the output_data
 mv vectors/output_data vectors/output_data_gate
@@ -74,7 +79,7 @@ mv vectors/output_data vectors/output_data_gate
 diff -B vectors/output_data_gate vectors/golden_data --brief > reports/gate_miscompares
 
 #report the results
-if [ $? -e 0 ] ; then
+if [ $? -eq 0 ] ; then
   echo -n "no "
 fi
 echo "errors detected in gate output"
@@ -89,7 +94,7 @@ mv vectors/output_data vectors/output_data_gate_sdf
 diff -B vectors/output_data_gate_sdf vectors/golden_data --brief > reports/gate_sdf_miscompares
 
 #report the results
-if [ $? -e 0 ] ; then
+if [ $? -eq 0 ] ; then
   echo -n "no "
 fi
 echo "errors detected in sdf/gate output"

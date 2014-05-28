@@ -27,7 +27,7 @@ reg b_neq_zero;                              // is reg_b != 0 ?
 wire [nbits-1:0] sub_out;                    // output of subtraction
 
 // state machine registry
-typedef enum {
+typedef enum reg [1:0] {
   IDLE,
   RUNNING,
   DONE,
@@ -35,14 +35,14 @@ typedef enum {
   } state;
 state gcd_ps, gcd_ns;
 
-enum {
+enum reg [1:0] {
   REG_A_HOLD,
   REG_A_IN,
   REG_A_SUB,
   REG_A_B
   } reg_a_sel;
 
-enum {
+enum reg [1:0] {
   REG_B_HOLD,
   REG_B_IN,
   REG_B_A
@@ -76,49 +76,50 @@ always_ff @(posedge clk) begin
     reg_b <= reg_a;
   REG_B_HOLD:
     reg_b <= reg_b;
+
+  // default is to hold
+  default:
+    reg_b <= reg_b;
   endcase
 end
 
 // finite state machine control
 always_comb begin
-  if (!reset_n) begin
-    reg_a_sel = REG_A_HOLD;
-    reg_b_sel = REG_B_HOLD;
-    done = 1'b0;
-  end else begin
+  reg_a_sel = REG_A_HOLD;
+  reg_b_sel = REG_B_HOLD;
+  done = 1'b0;
 
-    // case dependent values
-    case (gcd_ps)
-    IDLE: begin
-      if (start) begin
-        reg_a_sel = REG_A_IN;
-        reg_b_sel = REG_B_IN;
-      end else begin
-        reg_a_sel = REG_A_HOLD;
-        reg_b_sel = REG_B_HOLD;
-      end
-    end
-
-    RUNNING: begin
-      if (a_lt_b) begin
-        reg_a_sel = REG_A_B;
-        reg_b_sel = REG_B_A;
-      end else if (b_neq_zero) begin
-        reg_a_sel = REG_A_SUB;
-        reg_b_sel = REG_B_HOLD;
-      end else begin
-        reg_a_sel = REG_A_HOLD;
-        reg_b_sel = REG_B_HOLD;
-    end
-
-    DONE: begin
+  // case dependent values
+  case (gcd_ps)
+  IDLE: begin
+    if (start) begin
+      reg_a_sel = REG_A_IN;
+      reg_b_sel = REG_B_IN;
+    end else begin
       reg_a_sel = REG_A_HOLD;
       reg_b_sel = REG_B_HOLD;
-      done = 1'b1;
     end
-
-    endcase
   end
+
+  RUNNING: begin
+    if (a_lt_b) begin
+      reg_a_sel = REG_A_B;
+      reg_b_sel = REG_B_A;
+    end else if (b_neq_zero) begin
+      reg_a_sel = REG_A_SUB;
+      reg_b_sel = REG_B_HOLD;
+    end else begin
+      reg_a_sel = REG_A_HOLD;
+      reg_b_sel = REG_B_HOLD;
+    end
+  end
+
+  DONE: begin
+    reg_a_sel = REG_A_HOLD;
+    reg_b_sel = REG_B_HOLD;
+    done = 1'b1;
+  end
+  endcase
 end
 
 // determine next state
@@ -150,7 +151,7 @@ always_ff @(posedge clk, negedge reset_n) begin
   if (!reset_n) begin
     gcd_ps <= IDLE;
   end else begin
-    gcd_ps = gcd_ns;
+    gcd_ps <= gcd_ns;
   end
 end
 
