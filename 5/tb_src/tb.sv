@@ -8,7 +8,6 @@ integer i;
 integer nret;  //number of input fields returned from input file
 integer numb_inputs = 2;  //expected input from input data file
 
-
 parameter CYCLE = 2000;  //2ns period
 
 reg clk, reset_n;
