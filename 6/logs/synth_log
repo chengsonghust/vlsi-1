@@ -1,0 +1,237 @@
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+           Version E-2010.12-SP2 for linux -- Feb 25, 2011
+               Copyright (c) 1988-2011 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+#synopsys synthesis script
+#boilerplate
+set hdlin_auto_save_templates true
+true
+set hdlin_check_no_latch      true
+true
+# Tell DC where to look for files
+read_sverilog  rtl_src/gcd.sv
+Loading db file '/nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models/saed90nm_typ_pg.db'
+Loading db file '/usr/local/apps/synopsys/current_synthesis/libraries/syn/gtech.db'
+Loading db file '/usr/local/apps/synopsys/current_synthesis/libraries/syn/standard.sldb'
+  Loading link library 'saed90nm_typ'
+  Loading link library 'gtech'
+Loading sverilog file '/nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.sv'
+Detecting input file type automatically (-rtl or -netlist).
+Reading with Presto HDL Compiler (equivalent to -rtl option).
+Running PRESTO HDLC
+Compiling source file /nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.sv
+
+Statistics for case statements in always block at line 58 in file
+	'/nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            60            |    user/user     |
+|            72            |    user/user     |
+===============================================
+
+Statistics for case statements in always block at line 87 in file
+	'/nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            93            |     no/auto      |
+===============================================
+
+Statistics for case statements in always block at line 126 in file
+	'/nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           133            |     no/auto      |
+===============================================
+
+Inferred memory devices in process
+	in routine gcd line 58 in file
+		'/nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      reg_a_reg      | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|      reg_b_reg      | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine gcd line 150 in file
+		'/nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     gcd_ps_reg      | Flip-flop |   2   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Current design is now '/nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.db:gcd'
+Loaded 1 design.
+Current design is 'gcd'.
+gcd
+current_design gcd
+Current design is 'gcd'.
+{gcd}
+link
+
+  Linking design 'gcd'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  gcd                         /nfs/stak/students/b/baylesj/vlsi/5/rtl_src/gcd.db
+  saed90nm_typ (library)      /nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models/saed90nm_typ_pg.db
+
+1
+#erase all attributes and constrains from the current design
+reset_design
+1
+#set the environmental conditons to TYPICAL
+set_operating_conditions -max TYPICAL
+Using operating conditions 'TYPICAL' found in library 'saed90nm_typ'.
+1
+#set wire loading model to 8000
+set_wire_load_model -name 8000
+1
+#set wire loading mode to top  
+set_wire_load_mode top 
+1
+# Define the clock period as 2ns and clock port (2ns clock period)
+# Give the clock the name "my_clock"
+create_clock -period 2.0 -name my_clock [get_ports clk] 
+1
+# Set the clock uncertainty relative to my_clock as +/- 20pS
+set_clock_uncertainty -setup 0.020 [get_clocks my_clock]
+1
+set_clock_uncertainty -hold 0.020 [get_clocks my_clock]
+1
+# set the "input valid" delay to 1.0nS
+# exclude clock from the inputs expecting the delay
+set_input_delay 1.0 -max -clock my_clock [remove_from_collection [all_inputs] [get_ports clk]]
+1
+# set the setup time requirements for the next block to 1nS
+# exclude clock from the inputs expecting the delay
+set_output_delay 1.0 -max -clock my_clock [all_outputs]
+1
+#The next two are hard to get right, so I'll be nice!
+#set the fastest input data arrival time to check for hold time changes to 100pS
+set_input_delay -min 0.1 -clock my_clock [remove_from_collection [all_inputs] [get_ports clk]]
+1
+# set the hold time requirements for the next block to 150pS
+set_output_delay -min -0.150  -clock my_clock [all_outputs]
+1
+# Indicate the drive characteristics of what drives the inputs:
+# Use SDFFARX1 as the driving cell
+set_driving_cell -lib_cell SDFFARX1 [remove_from_collection [all_inputs] [get_ports clk]] 
+1
+# Indicate the capacitive loading on the outputs equal to 5 inv_2 inverter inputs
+set_load [expr 5 * [load_of saed90nm_typ/INVX2/IN]] [all_outputs]
+1
+# Compile with completely disolved design
+compile -ungroup_all
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | E-2010.12-DWBB_201012.2 |     *     |
+| Licensed DW Building Blocks        |                         |           |
+============================================================================
+
+
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'gcd'
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Total 0 isolation cells are inserted. (UPF-214)
+
+  Beginning Implementation Selection
+  ----------------------------------
+  Processing 'DW01_sub_width32'
+  Processing 'DW01_cmp2_width32'
+
+Information: Ignoring interrupt signal since design is being mapped.
+             One more interrupt will abort optimization without
+             transferring the design... (INT-7)
+
+  Beginning Mapping Optimizations  (Medium effort)
+  -------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:04   10263.4      0.30      15.2       0.0                          
+    0:00:04   10263.4      0.30      15.2       0.0                          
+    0:00:04   10263.4      0.30      15.2       0.0                          
+    0:00:05   10240.3      0.30      15.2       0.0                          
+    0:00:05   10240.3      0.30      15.2       0.0                          
+    0:00:05    7092.4      1.00      51.1       0.0                          
+    0:00:05    6930.6      0.50      21.7       0.0                          
+    0:00:05    6899.0      0.43      19.6       0.0                          
+    0:00:05    6896.9      0.38      17.0       0.0                          
+    0:00:05    6896.3      0.34      14.8       0.0                          
+    0:00:05    6899.7      0.31      13.0       0.0                          
+    0:00:05    6890.3      0.31      12.5       0.0                          
+    0:00:05    6900.1      0.29      11.7       0.0                          
+
+Information: Preparing to interrupt optimization... (INT-5)
+
+    0:00:05    6901.8      0.25      11.8       0.0                          
+    0:00:05    6914.0      0.26      12.5       0.0                          
+    0:00:05    6975.8      0.18       8.3       0.0                          
+    0:00:05    6975.8      0.18       8.3       0.0                          
+    0:00:05    6975.8      0.18       8.3       0.0                          
+    0:00:05    6975.8      0.18       8.3       0.0                          
+    0:00:05    6975.8      0.18       8.3       0.0                          
+    0:00:05    6975.8      0.18       8.3       0.0                          
+    0:00:05    6975.8      0.18       8.3       0.0                          
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+   ELAPSED            WORST NEG TOTAL NEG  DESIGN                            
+    TIME      AREA      SLACK     SLACK   RULE COST         ENDPOINT         
+  --------- --------- --------- --------- --------- -------------------------
+    0:00:05    6975.8      0.18       8.3       0.0                          
+
+Interrupting optimization...
+Trials elapsed time is 4 seconds, cycles = 2.
+Please type in one of the following options:
+   1 to Write out the current state of the design 
+   2 to Abort optimization 
+   3 to Kill the process 
+   4 to Continue optimization 
+Please enter a number:  
+Information: Invalid option... 
+Please type in one of the following options:
+   1 to Write out the current state of the design 
+   2 to Abort optimization 
+   3 to Kill the process 
+   4 to Continue optimization 
+Please enter a number:  
+Information: Invalid option... 
+Please type in one of the following options:
+   1 to Write out the current state of the design 
+   2 to Abort optimization 
