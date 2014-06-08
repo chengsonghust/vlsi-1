@@ -26,13 +26,14 @@ reg [pointer_width:0] rd_address, wr_address;
 wire [pointer_width-1:0] rd_pointer, wr_pointer;
 wire rd_msb, wr_msb;
 
-// use internal full and empty for assignments
+// use internal full and empty state machines for assignments
 reg full_ps, full_ns;
 reg empty_ps, empty_ns;
 
 // use an internal memory so we can read and write at the same time
 reg [width-1:0] memory[depth-1:0];
 
+/// assignments
 assign full = full_ps;
 assign empty = empty_ps;
 
@@ -42,7 +43,6 @@ assign wr_pointer = wr_address[pointer_width-1:0];
 assign rd_msb = rd_address[pointer_width];
 assign wr_msb = wr_address[pointer_width];
 
-assign 
 // reading
 always_comb begin
   data_out <= memory[rd_pointer];
@@ -60,7 +60,8 @@ always_ff @(posedge wr_clk, negedge reset_n) begin
     memory[wr_pointer] <= data_in;
 end
 
-// mealy machines
+/// mealy machines
+// advance empty state machine
 always_ff @(posedge rd_clk, negedge reset_n)
   if (!reset_n)
     empty_ps <= 1;
@@ -68,6 +69,7 @@ always_ff @(posedge rd_clk, negedge reset_n)
     empty_ps <= empty_ns;
 end
 
+// advance full state machine
 always_ff @(posedge wr_clk, negedge reset_n)
   if (!reset_n)
     full_ps <= 0;
@@ -75,6 +77,7 @@ always_ff @(posedge wr_clk, negedge reset_n)
     full_ps <= full_ns;
 end
 
+// compare pointers
 always_comb begin
   if (rd_pointer == wr_pointer) begin
     if (rd_msb != wr_msb)
