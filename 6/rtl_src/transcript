@@ -1,0 +1,102 @@
+# //  ModelSim SE 6.6a Mar 19 2010 Linux 2.6.32-431.1.2.el6.x86_64
+# //
+# //  Copyright 1991-2010 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# OpenFile fifo.sv 
+# Break key hit 
+vsim -novopt work.tb
+# vsim -novopt work.tb 
+# Loading sv_std.std
+# Loading work.tb
+# Loading work.fifo
+# ** Warning: (vsim-PLI-3691) fifo_tb.sv(98): Expected a system task, not a system function '$fscanf'.
+#         Region: /tb/wrstim
+vlog fifo_tb.sv
+# Model Technology ModelSim SE vlog 6.6a Compiler 2010.03 Mar 19 2010
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+vsim -novopt work.tb
+# vsim -novopt work.tb 
+# Loading sv_std.std
+# Refreshing /nfs/stak/students/b/baylesj/vlsi/6/rtl_src/work.tb
+# Loading work.tb
+# Loading work.fifo
+# ** Warning: (vsim-PLI-3691) fifo_tb.sv(98): Expected a system task, not a system function '$fscanf'.
+#         Region: /tb/wrstim
+run 1000
+# =====================
+# wrote: 00
+# empty=1, full=0
+# =====================
+# =====================
+# wrote: 11
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: 22
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: 33
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: 44
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: 55
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: 66
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: 77
+# empty=0, full=1
+# =====================
+# =====================
+# read: 00 
+# empty=0 full=1
+# =====================
+# read: 11 
+# empty=0 full=0
+# =====================
+# read: 22 
+# empty=0 full=0
+# =====================
+# read: 33 
+# empty=0 full=0
+# =====================
+# read: 44 
+# empty=0 full=0
+# =====================
+# read: 55 
+# empty=0 full=0
+# =====================
+# read: 66 
+# empty=0 full=0
+# =====================
+# read: 77 
+# empty=1 full=0
+# =====================
+# wrote: 88
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: 99
+# empty=0, full=0
+# =====================
+# =====================
+# wrote: aa
+# empty=0, full=0
+# =====================

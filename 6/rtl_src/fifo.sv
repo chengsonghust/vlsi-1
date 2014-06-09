@@ -30,19 +30,23 @@ wire rd_msb, wr_msb;
 integer i;
 
 // use internal full and empty flags
-reg full_ps;
+wire full_ps;
 wire full_cmp;
-wire full_delay;
+reg full_delay;
 
-reg empty_ps;
+wire empty_ps;
 wire empty_cmp;
-wire empty_delay;
+reg empty_delay;
 
 // use an internal memory so we can read and write at the same time
 reg [width-1:0] memory [depth-1:0];
 
 /// assignments
 assign full = full_ps;
+
+// compare pointers
+assign full_cmp = (rd_msb != wr_msb) & (rd_pointer == wr_pointer);
+assign empty_cmp = (rd_msb == wr_msb) & (rd_pointer == wr_pointer);
 
 // empty is the XOR'ed output of a ff synced to rd_clk with
 // input and compared to wr and rd pointer
@@ -94,19 +98,6 @@ always_ff @(posedge wr_clk, negedge reset_n) begin
     full_delay <= 0;
   else
     full_delay <= full_cmp;
-end
-
-// compare pointers
-always_comb begin
-  if (rd_pointer == wr_pointer) begin
-    if (rd_msb != wr_msb)
-      full_cmp = 1;
-    else
-      empty_cmp = 1;
-  end else begin
-    full_cmp = 0;
-    empty_cmp = 0;
-  end
 end
 
 // adder for rd_pointer
