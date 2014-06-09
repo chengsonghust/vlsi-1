@@ -29,7 +29,7 @@ wire rd_msb, wr_msb;
 // this is an index for a C-style loop. Synthesizes away though.
 integer i;
 
-// use internal full and empty state machines for assignments
+// use internal full and empty flags
 reg full_ps;
 wire full_cmp;
 wire full_delay;
@@ -48,6 +48,9 @@ assign full = full_ps;
 // input and compared to wr and rd pointer
 // empty needs to be deasserted when write happens
 assign empty = empty_cmp ^ empty_delay;
+
+// full is like empty, but with wr_clk
+assign full = full_cmp ^ full_delay;
 
 // the pointer to the actual data is the LSBs of the full address
 assign rd_pointer = rd_address[pointer_width-1:0];
@@ -76,6 +79,7 @@ always_ff @(posedge wr_clk, negedge reset_n) begin
 end
 
 // output delayed empty
+// we want to sync empty with rd_clk, hence flip flop
 always_ff @(posedge rd_clk, negedge reset_n) begin
   if (!reset_n)
     empty_delay <= 1;
@@ -84,6 +88,7 @@ always_ff @(posedge rd_clk, negedge reset_n) begin
 end
 
 // output delayed full
+// we want to sync full with wr_clk, hence flip flop
 always_ff @(posedge wr_clk, negedge reset_n) begin
   if (!reset_n)
     full_delay <= 0;
