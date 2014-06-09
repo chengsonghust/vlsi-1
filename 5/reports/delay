@@ -6,15 +6,15 @@ Report : timing
         -max_paths 1
 Design : gcd
 Version: E-2010.12-SP2
-Date   : Wed May 28 11:54:53 2014
+Date   : Wed May 28 14:29:44 2014
 ****************************************
 
 Operating Conditions: TYPICAL   Library: saed90nm_typ
 Wire Load Model Mode: top
 
-  Startpoint: reg_b_reg[0]
+  Startpoint: reg_b_reg[1]
               (rising edge-triggered flip-flop clocked by my_clock)
-  Endpoint: reg_a_reg[19]
+  Endpoint: reg_a_reg[2]
             (rising edge-triggered flip-flop clocked by my_clock)
   Path Group: my_clock
   Path Type: max
@@ -27,64 +27,57 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   clock my_clock (rise edge)               0.00       0.00
   clock network delay (ideal)              0.00       0.00
-  reg_b_reg[0]/CLK (DFFX1)                 0.00       0.00 r
-  reg_b_reg[0]/Q (DFFX1)                   0.27       0.27 f
-  U259/QN (INVX2)                          0.03       0.30 r
-  U258/Q (OR2X2)                           0.10       0.40 r
-  U249/QN (INVX4)                          0.02       0.42 f
-  U397/QN (OAI22X2)                        0.16       0.58 r
-  U398/QN (OAI21X2)                        0.15       0.73 f
-  U405/Q (AO21X2)                          0.16       0.88 f
-  U406/QN (NAND2X4)                        0.04       0.92 r
-  U407/QN (NAND2X4)                        0.03       0.95 f
-  U271/QN (INVX4)                          0.02       0.97 r
-  U270/Q (OR3X2)                           0.14       1.11 r
-  U419/QN (NAND2X4)                        0.03       1.14 f
-  U186/QN (NOR2X4)                         0.02       1.16 r
-  U187/Q (OR2X2)                           0.07       1.23 r
-  U440/QN (NAND2X4)                        0.03       1.27 f
-  U177/QN (INVX4)                          0.02       1.28 r
-  U446/QN (NOR2X4)                         0.03       1.31 f
-  U449/QN (NOR2X4)                         0.03       1.34 r
-  U452/QN (NAND2X4)                        0.03       1.37 f
-  U265/QN (INVX4)                          0.02       1.39 r
-  U458/QN (NOR2X4)                         0.03       1.41 f
-  U461/QN (NOR2X4)                         0.03       1.44 r
-  U464/QN (NAND2X4)                        0.05       1.49 f
-  U266/QN (INVX4)                          0.02       1.51 r
-  U470/QN (NOR2X4)                         0.03       1.53 f
-  U473/QN (NOR2X4)                         0.03       1.56 r
-  U476/QN (NAND2X4)                        0.05       1.62 f
-  U477/QN (INVX16)                         0.02       1.63 r
-  U483/QN (NOR2X4)                         0.03       1.66 f
-  U486/QN (NOR2X4)                         0.03       1.68 r
-  U489/QN (NAND2X4)                        0.03       1.71 f
-  U490/QN (NOR2X4)                         0.03       1.74 r
-  U491/QN (NOR2X4)                         0.04       1.78 f
-  U495/QN (NAND2X4)                        0.04       1.82 r
-  U496/QN (INVX8)                          0.03       1.85 f
-  U269/Q (NBUFFX2)                         0.06       1.91 f
-  U268/Q (OR2X2)                           0.10       2.01 f
-  U511/QN (INVX8)                          0.05       2.06 r
-  U156/QN (NOR2X4)                         0.04       2.10 f
-  U147/QN (INVX8)                          0.05       2.15 r
-  U143/QN (INVX8)                          0.03       2.18 f
-  U228/Q (AO22X1)                          0.14       2.32 f
-  U227/Q (AO221X1)                         0.12       2.44 f
-  reg_a_reg[19]/D (DFFX2)                  0.00       2.44 f
-  data arrival time                                   2.44
+  reg_b_reg[1]/CLK (DFFX1)                 0.00       0.00 r
+  reg_b_reg[1]/QN (DFFX1)                  0.17       0.17 r
+  U187/QN (INVX2)                          0.06       0.23 f
+  U466/Q (AND2X1)                          0.07       0.31 f
+  U565/QN (OAI22X2)                        0.16       0.46 r
+  U160/QN (OAI21X1)                        0.12       0.58 f
+  U145/QN (NAND2X2)                        0.03       0.61 r
+  U144/QN (NAND2X2)                        0.04       0.65 f
+  U566/QN (NAND2X4)                        0.03       0.69 r
+  U140/QN (NAND2X2)                        0.02       0.71 f
+  U248/Q (AND3X1)                          0.10       0.81 f
+  U167/QN (NOR2X2)                         0.04       0.85 r
+  U339/QN (NOR2X4)                         0.03       0.88 f
+  U338/QN (NOR2X4)                         0.03       0.91 r
+  U265/QN (NOR2X4)                         0.03       0.95 f
+  U262/QN (NOR2X4)                         0.04       0.98 r
+  U567/QN (NOR2X4)                         0.03       1.01 f
+  U568/QN (NOR2X4)                         0.03       1.04 r
+  U569/QN (NAND2X4)                        0.03       1.07 f
+  U465/QN (INVX4)                          0.02       1.10 r
+  U570/QN (NOR2X4)                         0.03       1.12 f
+  U571/QN (NOR2X4)                         0.03       1.15 r
+  U572/QN (NAND2X4)                        0.03       1.19 f
+  U480/QN (INVX4)                          0.02       1.21 r
+  U573/QN (NOR2X4)                         0.03       1.24 f
+  U574/QN (NOR2X4)                         0.03       1.27 r
+  U575/QN (NAND2X4)                        0.03       1.30 f
+  U576/QN (NOR2X4)                         0.03       1.33 r
+  U577/QN (NOR2X4)                         0.03       1.36 f
+  U578/QN (NAND2X4)                        0.04       1.40 r
+  U169/Q (OA21X1)                          0.13       1.53 r
+  U185/QN (NAND2X2)                        0.06       1.59 f
+  U221/QN (INVX4)                          0.05       1.63 r
+  U490/Q (NBUFFX2)                         0.09       1.73 r
+  U336/Q (AND2X1)                          0.08       1.81 r
+  U194/QN (NOR2X0)                         0.05       1.86 f
+  U353/QN (NAND2X1)                        0.04       1.90 r
+  reg_a_reg[2]/D (DFFX1)                   0.00       1.90 r
+  data arrival time                                   1.90
 
   clock my_clock (rise edge)               2.00       2.00
   clock network delay (ideal)              0.00       2.00
   clock uncertainty                       -0.02       1.98
-  reg_a_reg[19]/CLK (DFFX2)                0.00       1.98 r
-  library setup time                      -0.07       1.91
-  data required time                                  1.91
+  reg_a_reg[2]/CLK (DFFX1)                 0.00       1.98 r
+  library setup time                      -0.08       1.90
+  data required time                                  1.90
   -----------------------------------------------------------
-  data required time                                  1.91
-  data arrival time                                  -2.44
+  data required time                                  1.90
+  data arrival time                                  -1.90
   -----------------------------------------------------------
-  slack (VIOLATED)                                   -0.52
+  slack (MET)                                         0.00
 
 
 1

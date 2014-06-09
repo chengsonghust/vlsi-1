@@ -1,5 +1,5 @@
-# vsim -do dofile -c -quiet -t 1ps tb 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# vsim +nowarnTFMPC +nowarn3448 -do dofile -c -quiet -sdfmax /tb/gcd_0=sdfout/gcd.gate.sdf -t 1ps tb 
+# ** Note: (vsim-3812) Design is being optimized...
 # //  ModelSim SE 6.6a Mar 19 2010 Linux 2.6.32-431.1.2.el6.x86_64
 # //
 # //  Copyright 1991-2010 Mentor Graphics Corporation
@@ -10,5 +10,6 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
+# ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
+#    Time: 0 ps  Iteration: 0  Region: /tb  File: tb_src/tb.sv
 # do dofile 
-#       3430

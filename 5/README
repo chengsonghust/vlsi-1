@@ -1,0 +1,11 @@
+- Total area: 6343.935
+  Total gate count = area / and_size = 1,147 gates
+  
+- Worst case setup time: 1.90
+
+- Worst case hold time (delay min) = 0.25
+
+- Originally two comb latches were found. I removed them
+by deleting logic that implemented default storing behavior
+(keeping status if it doesn't change)
+

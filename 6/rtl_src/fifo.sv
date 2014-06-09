@@ -26,20 +26,34 @@ reg [pointer_width:0] rd_address, wr_address;
 wire [pointer_width-1:0] rd_pointer, wr_pointer;
 wire rd_msb, wr_msb;
 
+// this is an index for a C-style loop. Synthesizes away though.
+integer i;
+
 // use internal full and empty state machines for assignments
-reg full_ps, full_ns;
-reg empty_ps, empty_ns;
+reg full_ps;
+wire full_cmp;
+wire full_delay;
+
+reg empty_ps;
+wire empty_cmp;
+wire empty_delay;
 
 // use an internal memory so we can read and write at the same time
-reg [width-1:0] memory[depth-1:0];
+reg [width-1:0] memory [depth-1:0];
 
 /// assignments
 assign full = full_ps;
-assign empty = empty_ps;
 
+// empty is the XOR'ed output of a ff synced to rd_clk with
+// input and compared to wr and rd pointer
+// empty needs to be deasserted when write happens
+assign empty = empty_cmp ^ empty_delay;
+
+// the pointer to the actual data is the LSBs of the full address
 assign rd_pointer = rd_address[pointer_width-1:0];
 assign wr_pointer = wr_address[pointer_width-1:0];
 
+// keep track of the MSB seperately for compares
 assign rd_msb = rd_address[pointer_width];
 assign wr_msb = wr_address[pointer_width];
 
@@ -56,54 +70,54 @@ always_ff @(posedge wr_clk, negedge reset_n) begin
     end
   end
 
-  else if (wr)
+  else if (wr) begin
     memory[wr_pointer] <= data_in;
+  end
 end
 
-/// mealy machines
-// advance empty state machine
-always_ff @(posedge rd_clk, negedge reset_n)
+// output delayed empty
+always_ff @(posedge rd_clk, negedge reset_n) begin
   if (!reset_n)
-    empty_ps <= 1;
+    empty_delay <= 1;
   else
-    empty_ps <= empty_ns;
+    empty_delay <= empty_cmp;
 end
 
-// advance full state machine
-always_ff @(posedge wr_clk, negedge reset_n)
+// output delayed full
+always_ff @(posedge wr_clk, negedge reset_n) begin
   if (!reset_n)
-    full_ps <= 0;
+    full_delay <= 0;
   else
-    full_ps <= full_ns;
+    full_delay <= full_cmp;
 end
 
 // compare pointers
 always_comb begin
   if (rd_pointer == wr_pointer) begin
     if (rd_msb != wr_msb)
-      full_ns = 1;
+      full_cmp = 1;
     else
-      empty_ns = 1;
+      empty_cmp = 1;
   end else begin
-    full_ns = 0;
-    empty_ns = 0;
+    full_cmp = 0;
+    empty_cmp = 0;
   end
 end
 
 // adder for rd_pointer
 always_ff @(posedge rd_clk, negedge reset_n) begin
   if (!reset_n)
-    rd_pointer <= 3'b0;
+    rd_address <= 4'b0;
   else if (rd)
-    rd_pointer <= rd_pointer + 1;
+    rd_address <= rd_address + 1;
 end
 
 // adder for wr_pointer
 always_ff @(posedge wr_clk, negedge reset_n) begin
   if (!reset_n)
-    wr_pointer <= 3'b0;
+    wr_address <= 4'b0;
   else if (wr)
-    wr_pointer <= wr_pointer + 1;
+    wr_address <= wr_address + 1;
 end
 
 endmodule
