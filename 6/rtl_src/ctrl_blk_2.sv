@@ -32,10 +32,10 @@ enum {
 enum {
   idle,
   write,
-  wait
+  hold
 } ram_write_ps, ram_write_ns;
 
-// read fifo into the averager
+// read fifo into the averager/accumulator
 always_ff (posedge clk_50, negedge reset_n) begin
   if (!reset_n)
     fifo_avg_ps <= idle;
@@ -77,5 +77,52 @@ always_comb begin
   endcase
 end
 
+
+// what is the current byte?
+always_ff (posedge clk_50, negedge reset_n) begin
+  if (!reset_n)
+    cur_byte_ps<= false;
+  else
+    cur_byte_ps <= cur_byte_ns;
+end
+
+always_comb begin
+  cur_byte_ns = idle;
+
+  case (cur_byte_ps)
+  idle:
+
+  byte_0:
+
+  byte_1:
+
+  byte_2:
+
+  byte_3:
+
+  endcase
+end
+
+
+// ram write status
+always_ff (posedge clk_50, negedge reset_n) begin
+  if (!reset_n)
+    ram_write_ps <= false;
+  else
+    ram_write_ps <= ram_write_ns;
+end
+
+always_comb begin
+  ram_write_ns = idle;
+
+  case (ram_write_ps)
+  idle:
+
+  write:
+
+  hold:
+
+  endcase
+end
 
 endmodule

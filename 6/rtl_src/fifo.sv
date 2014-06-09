@@ -16,9 +16,9 @@ module fifo (
         );
 
 /// parameters
-parameter width = 8;          // 8-bit wide
-parameter depth = 8;          // 8-byte deep
-parameter pointer_width = 3;  // width = ceil(log_2(depth))
+parameter width = 8;               // 8-bit wide
+parameter depth = 8;               // 8-byte deep
+parameter pointer_width = 3;       // width = ceil(log_2(depth))
 
 /// internals
 // pointers

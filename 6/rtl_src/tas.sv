@@ -22,7 +22,7 @@ wire wr_fifo;
 wire wr_ram;
 wire zero_sel;
 
-assign a5_or_c3 = ;
+assign a5_or_c3 = (parallel_data == 8'hA5) || (parallel_data == 8'hC3);
 assign ram_data = acc_out[7:0];
 
 shift_reg(clk_50,
@@ -68,5 +68,15 @@ ram_addr_cntr(clk_2,
               reset_n,
               ram_ena
               );
+
+// delay flip flop to addr_counter
+always_ff @(posedge clk_2, negedge reset_n) begin
+  if (!reset_n) begin
+    ram_en <= 0;
+  end else begin
+    ram_en <= wr_ram;
+  end
+end
+
 endmodule
 
