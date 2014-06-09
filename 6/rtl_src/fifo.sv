@@ -45,7 +45,7 @@ assign wr_msb = wr_address[pointer_width];
 
 // reading
 always_comb begin
-  data_out <= memory[rd_pointer];
+  data_out = memory[rd_pointer];
 end
 
 // writing
