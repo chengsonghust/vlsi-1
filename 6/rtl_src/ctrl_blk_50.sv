@@ -79,17 +79,23 @@ always_ff (posedge clk_2, negedge reset_n) begin
     data_type_ps <= data_type_ns;
 end
 
-// logic for data type?
+// TODO fix logic for data type?
 always_comb begin
   data_type_ns = unknown;
 
   case(data_type_ps)
   header:
-
+    if (a5_or_c3)
+      data_type_ns = header;
+    else
+      data_type_ns = data;
   data:
-
+    if (a5_or_c3)
+      data_type_ns = header;
+    else
+      data_type_ns = data;
   unknown:
-
+    data_type_ns = header;
   endcase
 end
 
