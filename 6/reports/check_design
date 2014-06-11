@@ -1,2 +1,31 @@
-Error: Current design is not defined. (UID-4)
-0
+Warning: Design 'tas' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+check_design summary:
+Version:     E-2010.12-SP2
+Date:        Wed Jun 11 16:04:53 2014
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      2
+    Multiply driven inputs (LINT-6)                                 2
+
+Tristate                                                           11
+    A tristate bus has a non tri-state driver (LINT-34)            11
+--------------------------------------------------------------------------------
+
+Warning: In design 'tas', input port 'clk_2' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'tas', input port 'reset_n' drives wired logic; the port direction may have been specified incorrectly. (LINT-6)
+Warning: In design 'tas', three-state bus 'ram_ena' has non three-state driver 'U69/QN'. (LINT-34)
+Warning: In design 'tas', three-state bus 'zero_sel' has non three-state driver 'U21/QN'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[0]' has non three-state driver 'F1/U118/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[1]' has non three-state driver 'F1/U121/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[2]' has non three-state driver 'F1/U124/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[3]' has non three-state driver 'F1/U127/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[4]' has non three-state driver 'F1/U130/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[5]' has non three-state driver 'F1/U133/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[6]' has non three-state driver 'F1/U136/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'fifo_data[7]' has non three-state driver 'F1/U139/Q'. (LINT-34)
+Warning: In design 'tas', three-state bus 'rd_fifo' has non three-state driver 'CB2/read_ps_reg/Q'. (LINT-34)
+1

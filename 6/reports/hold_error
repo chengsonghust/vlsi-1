@@ -1,2 +1,82 @@
-Error: Current design is not defined. (UID-4)
-0
+Warning: Design 'tas' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 1
+Design : tas
+Version: E-2010.12-SP2
+Date   : Wed Jun 11 16:04:53 2014
+****************************************
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: top
+
+  Startpoint: CB2/ram_write_ps_reg[1]
+              (rising edge-triggered flip-flop clocked by my_clock_2)
+  Endpoint: CB2/ram_write_ps_reg[1]
+            (rising edge-triggered flip-flop clocked by my_clock_2)
+  Path Group: my_clock_2
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  tas                8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock my_clock_2 (rise edge)                            0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  CB2/ram_write_ps_reg[1]/CLK (DFFARX1)                   0.00       0.00 r
+  CB2/ram_write_ps_reg[1]/QN (DFFARX1)                    0.18       0.18 f
+  U67/Q (AND2X1)                                          0.08       0.26 f
+  CB2/ram_write_ps_reg[1]/D (DFFARX1)                     0.00       0.26 f
+  data arrival time                                                  0.26
+
+  clock my_clock_2 (rise edge)                            0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                       0.02       0.02
+  CB2/ram_write_ps_reg[1]/CLK (DFFARX1)                   0.00       0.02 r
+  library hold time                                      -0.04      -0.02
+  data required time                                                -0.02
+  --------------------------------------------------------------------------
+  data required time                                                -0.02
+  data arrival time                                                 -0.26
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.28
+
+
+  Startpoint: data_ena (input port clocked by my_clock_50)
+  Endpoint: CB50/detect_ps_reg
+            (rising edge-triggered flip-flop clocked by my_clock_50)
+  Path Group: my_clock_50
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  tas                8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock my_clock_50 (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.10       0.10 f
+  data_ena (in)                            0.03       0.13 f
+  CB50/detect_ps_reg/D (DFFARX1)           0.00       0.13 f
+  data arrival time                                   0.13
+
+  clock my_clock_50 (rise edge)            0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  clock uncertainty                        0.02       0.02
+  CB50/detect_ps_reg/CLK (DFFARX1)         0.00       0.02 r
+  library hold time                       -0.05      -0.03
+  data required time                                 -0.03
+  -----------------------------------------------------------
+  data required time                                 -0.03
+  data arrival time                                  -0.13
+  -----------------------------------------------------------
+  slack (MET)                                         0.15
+
+
+1

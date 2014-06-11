@@ -65,17 +65,17 @@ ctrl_blk_2 CB2 (fifo_empty,
                 ram_wr_n
                 );
 
-averager A1 (fifo_data,
-             zero_sel,
-             rd_fifo,
-             clk_2,
-             reset_n,
-             acc_out);
+averager A1 (.fifo_data,
+             .zero_sel,
+             .rd_fifo,
+             .clk_2,
+             .reset_n,
+             .acc_out);
 
-ram_addresser RA1 (clk_2,
-                   reset_n,
-                   ram_ena,
-                   ram_addr
+ram_addresser RA1 (.clk_2,
+                   .reset_n,
+                   .ram_ena,
+                   .ram_addr
                    );
 
 endmodule

@@ -53,7 +53,7 @@ set_output_delay 1.0 -max -clock my_clock_2  [all_outputs]
 set_input_delay -min 0.1 -clock my_clock_50 [remove_from_collection [all_inputs] [get_ports clk_50]]
 
 # set the hold time requirements for the next block to 150pS
-set_output_delay -min -0.150  -clock my_clock_2 [all_outputs]
+set_output_delay -min -0.150  -clock my_clock_50 [all_outputs]
 
 # Indicate the drive characteristics of what drives the inputs:
 # Use SDFFARX1 as the driving cell

@@ -1,2 +1,35 @@
-Error: Current design is not defined. (UID-4)
-0
+Warning: Design 'tas' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating graph... (UID-83)
+Warning: Clock port 'my_clock_2' is assigned input delay relative to clock 'my_clock_50'. (TIM-111)
+Warning: Clock port 'my_clock_2' is assigned input delay relative to clock 'my_clock_50'. (TIM-111)
+ 
+****************************************
+Report : area
+Design : tas
+Version: E-2010.12-SP2
+Date   : Wed Jun 11 16:04:53 2014
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    saed90nm_typ (File: /nfs/guille/a1/cadlibs/synop_lib/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models/saed90nm_typ_pg.db)
+
+Number of ports:                           25
+Number of nets:                           323
+Number of cells:                          285
+Number of combinational cells:            192
+Number of sequential cells:                93
+Number of macros:                           0
+Number of buf/inv:                         28
+Number of references:                      24
+
+Combinational area:       2023.385019
+Noncombinational area:    2997.964046
+Net Interconnect area:     293.491417  
+
+Total cell area:          5021.349066
+Total area:               5314.840483
+
+Information: This design contains black box (unknown) components. (RPT-8)
+1

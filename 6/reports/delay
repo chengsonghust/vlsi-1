@@ -1,2 +1,95 @@
-Error: Current design is not defined. (UID-4)
-0
+Warning: Design 'tas' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : tas
+Version: E-2010.12-SP2
+Date   : Wed Jun 11 16:04:53 2014
+****************************************
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: top
+
+  Startpoint: F1/wr_addr_reg[2]
+              (rising edge-triggered flip-flop clocked by my_clock_50)
+  Endpoint: CB2/byte_cnt_ps_reg[1]
+            (rising edge-triggered flip-flop clocked by my_clock_2)
+  Path Group: my_clock_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  tas                8000                  saed90nm_typ
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock my_clock_50 (rise edge)          480.00     480.00
+  clock network delay (ideal)              0.00     480.00
+  F1/wr_addr_reg[2]/CLK (DFFARX1)          0.00     480.00 r
+  F1/wr_addr_reg[2]/Q (DFFARX1)            0.31     480.31 f
+  F1/U114/Q (XOR2X1)                       0.15     480.46 r
+  F1/U111/Q (AND3X1)                       0.09     480.55 r
+  F1/U110/QN (NAND2X0)                     0.09     480.65 f
+  F1/U109/QN (NAND2X0)                     0.11     480.75 r
+  U25/QN (INVX0)                           0.06     480.81 f
+  U24/QN (NAND2X0)                         0.12     480.93 r
+  U16/QN (INVX0)                           0.14     481.07 f
+  U31/Q (AO222X1)                          0.23     481.30 f
+  CB2/byte_cnt_ps_reg[1]/D (DFFARX1)       0.00     481.30 f
+  data arrival time                                 481.30
+
+  clock my_clock_2 (rise edge)           500.00     500.00
+  clock network delay (ideal)              0.00     500.00
+  clock uncertainty                       -0.02     499.98
+  CB2/byte_cnt_ps_reg[1]/CLK (DFFARX1)     0.00     499.98 r
+  library setup time                      -0.09     499.89
+  data required time                                499.89
+  -----------------------------------------------------------
+  data required time                                499.89
+  data arrival time                                -481.30
+  -----------------------------------------------------------
+  slack (MET)                                        18.60
+
+
+  Startpoint: data_ena (input port clocked by my_clock_50)
+  Endpoint: CB50/data_type_ps_reg[1]
+            (rising edge-triggered flip-flop clocked by my_clock_50)
+  Path Group: my_clock_50
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  tas                8000                  saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock my_clock_50 (rise edge)                           0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    1.00       1.00 r
+  data_ena (in)                                           0.02       1.02 r
+  U46/Q (NBUFFX2)                                         0.14       1.16 r
+  U26/Q (OR2X1)                                           0.14       1.30 r
+  U17/QN (INVX0)                                          0.09       1.39 f
+  U43/QN (NAND2X0)                                        0.07       1.46 r
+  U42/Q (XOR2X1)                                          0.13       1.59 f
+  U41/QN (NOR2X0)                                         0.05       1.64 r
+  CB50/data_type_ps_reg[1]/D (DFFARX1)                    0.00       1.64 r
+  data arrival time                                                  1.64
+
+  clock my_clock_50 (rise edge)                          20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock uncertainty                                      -0.02      19.98
+  CB50/data_type_ps_reg[1]/CLK (DFFARX1)                  0.00      19.98 r
+  library setup time                                     -0.12      19.86
+  data required time                                                19.86
+  --------------------------------------------------------------------------
+  data required time                                                19.86
+  data arrival time                                                 -1.64
+  --------------------------------------------------------------------------
+  slack (MET)                                                       18.22
+
+
+1
