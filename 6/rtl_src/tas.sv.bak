@@ -21,6 +21,7 @@ wire fifo_empty;
 wire fifo_full;
 wire [7:0] parallel_data;
 reg ram_ena;
+reg ram_ena_ffo;
 wire rd_fifo;
 wire wr_fifo;
 wire wr_ram;
@@ -28,6 +29,8 @@ wire zero_sel;
 
 assign a5_or_c3 = (parallel_data == 8'hA5) || (parallel_data == 8'hC3);
 assign ram_data = acc_out[7:0];
+assign ram_wr_n = ram_ena;
+assign ram_ena = wr_ram & !ram_ena_ffo;
 
 shift_reg S1 (clk_50,
               reset_n,
@@ -77,9 +80,9 @@ ram_addr_cntr RAC1 (clk_2,
 // delay flip flop to addr_counter
 always_ff @(posedge clk_2, negedge reset_n) begin
   if (!reset_n) begin
-    ram_ena <= 0;
+    ram_ena_ffo <= 0;
   end else begin
-    ram_ena <= wr_ram;
+    ram_ena_ffo <= wr_ram;
   end
 end
 

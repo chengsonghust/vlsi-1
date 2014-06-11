@@ -12,7 +12,7 @@
 # // FOR HIGHER EDUCATION PURPOSES ONLY
 # //
 # vsim work.tb 
-# Start time: 10:02:03 on Jun 11,2014
+# Start time: 13:33:26 on Jun 11,2014
 # Loading sv_std.std
 # Loading work.tb
 # Loading work.tas
@@ -22,484 +22,50 @@
 # Loading work.ctrl_blk_2
 # Loading work.averager
 # Loading work.ram_addr_cntr
-vlog rtl_src/fifo.sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:16:20 on Jun 11,2014
-# vlog -reportprogress 300 rtl_src/fifo.sv 
-# -- Compiling module fifo
+# ** Error: (vsim-3033) vlogout/tas.gate.v(39): Instantiation of 'DFFARX1' failed. The design unit was not found.
 # 
-# Top level modules:
-# 	fifo
-# End time: 10:16:21 on Jun 11,2014, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vsim rtl_src/tb.sv -novopt
-# vsim 
-# Start time: 10:16:44 on Jun 11,2014
-# ** Error: (vsim-19) Failed to access library 'rtl_src/tb' at "rtl_src/tb".
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(41): Instantiation of 'OR2X1' failed. The design unit was not found.
 # 
-# No such file or directory. (errno = ENOENT)
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(42): Instantiation of 'NOR4X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(44): Instantiation of 'NAND2X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(45): Instantiation of 'NOR4X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(47): Instantiation of 'NAND3X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(49): Instantiation of 'NOR2X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(50): Instantiation of 'NAND2X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
 # Error loading design
-ls
-# README
-# bin
-# clean.sh
-# command.log
-# default.svf
-# dofile
-# doit
-# logs
-# output_data
-# reports
-# rtl_src
-# sdfout
-# tb_src
-# transcript
-# turnin
-# vectors
-# vlogout
-# vsim.wlf
-# work
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:16:55 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 10:16:55 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim work.fifo_tb -novopt
-# vsim 
-# Start time: 10:17:09 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.fifo_tb
-# Loading work.fifo
-# ** Warning: (vsim-PLI-3691) rtl_src/fifo_tb.sv(98): Expected a system task, not a system function '$fscanf'.
-# 
-#         Region: /fifo_tb/wrstim
-add wave -position end sim:/fifo_tb/fifo_0/*
-run 1000
-# ** Warning: (vsim-3534) [FOFIR] - Failed to open file "input_data" for reading.
-# 
-# No such file or directory. (errno = ENOENT)    : rtl_src/fifo_tb.sv(83)
-#    Time: 0 ns  Iteration: 0  Instance: /fifo_tb
-# ERROR : CAN NOT OPEN input_file
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=1 full=0
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-rtl_src/*.sv
-# invalid command name "rtl_src/*.sv"
-rtl_src/*.svvlog -novopt
-# invalid command name "rtl_src/*.svvlog"
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:21:59 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 10:21:59 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb_fifo
-# vsim 
-# Start time: 10:22:08 on Jun 11,2014
-# ** Error: (vsim-3170) Could not find 'C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work.tb_fifo'.
-# 
-# Error loading design
-vsim -novopt work.fifo_tb
-# vsim 
-# Start time: 10:22:13 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.fifo_tb
-# Loading work.fifo
-# ** Warning: (vsim-PLI-3691) rtl_src/fifo_tb.sv(98): Expected a system task, not a system function '$fscanf'.
-# 
-#         Region: /fifo_tb/wrstim
-add wave -position end sim:/fifo_tb/fifo_0/*
-run 1000
-# ** Warning: (vsim-3534) [FOFIR] - Failed to open file "input_data" for reading.
-# 
-# No such file or directory. (errno = ENOENT)    : rtl_src/fifo_tb.sv(83)
-#    Time: 0 ns  Iteration: 0  Instance: /fifo_tb
-# ERROR : CAN NOT OPEN input_file
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=1
-# =====================
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=1 full=0
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-vsim work.tb -novopt
-# vsim 
-# Start time: 10:23:46 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/F1/*
-run 1000
-# sending: a5
-# sending: 3a
-run 1000
-# sending: 55
-# sending: 43
-# sending: 3c
-run 1000
-vlog -novopt rtl*/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:31:10 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tas
-# End time: 10:31:10 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim work.fifo_tb -novopt
-# vsim 
-# Start time: 10:31:19 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.fifo_tb
-# Loading work.fifo
-# ** Warning: (vsim-PLI-3691) rtl_src/fifo_tb.sv(98): Expected a system task, not a system function '$fscanf'.
-# 
-#         Region: /fifo_tb/wrstim
-add wave -position end sim:/fifo_tb/fifo_0/*
-run 1000
-# ** Warning: (vsim-3534) [FOFIR] - Failed to open file "input_data" for reading.
-# 
-# No such file or directory. (errno = ENOENT)    : rtl_src/fifo_tb.sv(83)
-#    Time: 0 ns  Iteration: 0  Instance: /fifo_tb
-# ERROR : CAN NOT OPEN input_file
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=1
-# =====================
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=0 full=0
-# =====================
-# read: xx 
-# empty=1 full=0
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
-# ** Error: (vsim-PLI-3084) rtl_src/fifo_tb.sv(98): $fscanf : Argument 1 is not a valid file descriptor.
-# 
-#         Region: /fifo_tb/fifo_0
-# =====================
-# wrote: xx
-# empty=0, full=0
-# =====================
 vsim work.tb
 # vsim 
-# Start time: 10:31:56 on Jun 11,2014
+# Start time: 13:34:08 on Jun 11,2014
 # Loading sv_std.std
 # Loading work.tb
 # Loading work.tas
@@ -509,114 +75,50 @@ vsim work.tb
 # Loading work.ctrl_blk_2
 # Loading work.averager
 # Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/F1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  16 
+# ** Error: (vsim-3033) vlogout/tas.gate.v(39): Instantiation of 'DFFARX1' failed. The design unit was not found.
 # 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:   5 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(41): Instantiation of 'OR2X1' failed. The design unit was not found.
 # 
-# write to RAM:: address: 7fd  data:  10 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(42): Instantiation of 'NOR4X0' failed. The design unit was not found.
 # 
-vlog rtl_src/fifo*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:36:17 on Jun 11,2014
-# vlog -reportprogress 300 rtl_src/fifo.sv rtl_src/fifo_tb.sv 
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(44): Instantiation of 'NAND2X0' failed. The design unit was not found.
 # 
-# Top level modules:
-# 	fifo_tb
-# End time: 10:36:17 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim work.fifo_Tb
-# vsim 
-# Start time: 10:36:22 on Jun 11,2014
-# ** Error: (vsim-3170) Could not find 'work.fifo_Tb'.
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(45): Instantiation of 'NOR4X0' failed. The design unit was not found.
 # 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(47): Instantiation of 'NAND3X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(49): Instantiation of 'NOR2X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(50): Instantiation of 'NAND2X0' failed. The design unit was not found.
+# 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
 # Error loading design
-vsim work.fifo_tb
-# vsim 
-# Start time: 10:36:25 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.fifo_tb
-# Loading work.fifo
-# ** Warning: (vsim-PLI-3691) rtl_src/fifo_tb.sv(98): Expected a system task, not a system function '$fscanf'.
-# 
-#         Region: /fifo_tb/wrstim
-vsim -novopt work.tb
-# vsim 
-# Start time: 10:36:38 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/F1/*
-run 1000
-# sending: a5
-# sending: 3a
-run 10000
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  16 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:   5 
-# 
-# write to RAM:: address: 7fd  data:  10 
-# 
-# sending: a5
-# sending: 02
-vlog src*/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:38:52 on Jun 11,2014
-# vlog -reportprogress 300 src*/*sv 
-# ** Error: (vlog-7) Failed to open design unit file "src*/*sv" in read mode.
-# 
-# No such file or directory. (errno = ENOENT)
-# End time: 10:38:52 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
 vlog *src/*sv
 # Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:39:01 on Jun 11,2014
-# vlog -reportprogress 300 rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# ** Error: rtl_src/fifo.sv(62): (vlog-2110) Illegal reference to net "data_out".
-# 
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# End time: 10:39:01 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
-vlog *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:39:14 on Jun 11,2014
+# Start time: 13:34:14 on Jun 11,2014
 # vlog -reportprogress 300 rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
 # -- Compiling module averager
 # -- Compiling module ctrl_blk_2
@@ -631,246 +133,11 @@ vlog *src/*sv
 # Top level modules:
 # 	fifo_tb
 # 	tb
-# End time: 10:39:14 on Jun 11,2014, Elapsed time: 0:00:00
+# End time: 13:34:14 on Jun 11,2014, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -novopt work.tb
+vsim work.tb
 # vsim 
-# Start time: 10:39:20 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/F1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  16 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:   5 
-# 
-# write to RAM:: address: 7fd  data:  10 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 10:46:06 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 10:46:06 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 10:46:11 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/F1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  67 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fd  data:  16 
-# 
-# write to RAM:: address: 7fc  data:  10 
-# 
-vsim -novopt work.tb
-# vsim 
-# Start time: 10:54:17 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/F1/*
-add wave -position end sim:/tb/tas_0/A1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  67 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fd  data:  16 
-# 
-# write to RAM:: address: 7fc  data:  10 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:11:56 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 11:11:56 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:12:04 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/CB2/*
-add wave -position end sim:/tb/tas_0/A1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  67 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fd  data:  16 
-# 
-# write to RAM:: address: 7fc  data:  10 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:37:47 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 11:37:48 on Jun 11,2014, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:37:53 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:   0 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  21 
-# 
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:38:09 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/F1/*
-add wave -position end sim:/tb/tas_0/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:   0 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  21 
-# 
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:39:13 on Jun 11,2014
+# Start time: 13:34:15 on Jun 11,2014
 # Loading sv_std.std
 # Loading work.tb
 # Loading work.tas
@@ -882,554 +149,6 @@ vsim -novopt work.tb
 # Loading work.ram_addr_cntr
 add wave -position end sim:/tb/tas_0/A1/*
 add wave -position end sim:/tb/tas_0/CB2/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:   0 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  21 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:45:25 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# ** Error: rtl_src/ctrl_blk_2.sv(29): (vlog-2730) Undefined variable: 'avgr_cnt_ns'.
-# 
-# ** Error: rtl_src/ctrl_blk_2.sv(35): (vlog-2388) 'avgr_cnt_ns' already declared in this scope (ctrl_blk_2).
-# 
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# End time: 11:45:25 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 2, Warnings: 0
-# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:45:45 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# ** Error: rtl_src/ctrl_blk_2.sv(53): (vlog-2110) Illegal reference to net "avgr_cnt_ns".
-# 
-# ** Error: rtl_src/ctrl_blk_2.sv(55): (vlog-2110) Illegal reference to net "avgr_cnt_ns".
-# 
-# ** Error: rtl_src/ctrl_blk_2.sv(57): (vlog-2110) Illegal reference to net "avgr_cnt_ns".
-# 
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# End time: 11:45:45 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 3, Warnings: 0
-# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:46:22 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 11:46:22 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:46:26 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  82 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data: 117 
-# 
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:47:21 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/A1/*
-add wave -position end sim:/tb/tas_0/CB2/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  82 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data: 117 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:56:42 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# ** Error: rtl_src/ctrl_blk_2.sv(67): (vlog-2730) Undefined variable: 'clk_2'.
-# 
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# End time: 11:56:42 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:56:53 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 11:56:53 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:56:57 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/CB2/*
-add wave -position end sim:/tb/tas_0/A1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  67 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data: 103 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 11:58:24 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 11:58:24 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:58:28 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/A1/*
-add wave -position end sim:/tb/tas_0/CB2/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  67 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  35 
-# 
-vsim -novopt work.tb
-# vsim 
-# Start time: 11:59:56 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 12:00:02 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 12:00:02 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 12:00:05 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/A1/*
-add wave -position end sim:/tb/tas_0/CB2/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  53 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  35 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 12:01:20 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 12:01:20 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 12:01:24 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/CB2/*
-add wave -position end sim:/tb/tas_0/A1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:   0 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  21 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 12:04:21 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# ** Error: rtl_src/ctrl_blk_2.sv(49): (vlog-2730) Undefined variable: 'restart_avgr'.
-# 
-# ** Error: rtl_src/ctrl_blk_2.sv(55): (vlog-2730) Undefined variable: 'restart_avgr'.
-# 
-# ** Error: rtl_src/ctrl_blk_2.sv(68): near "=": syntax error, unexpected '=', expecting ++ or --
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# End time: 12:04:21 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 3, Warnings: 0
-# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
-vsim -novopt work.tb
-# vsim 
-# Start time: 12:04:49 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 12:04:53 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# ** Error: rtl_src/ctrl_blk_2.sv(70): near "=": syntax error, unexpected '=', expecting ++ or --
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# End time: 12:04:53 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 12:05:43 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 12:05:43 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 12:05:47 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/A1/*
-add wave -position end sim:/tb/tas_0/CB2/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  67 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  35 
-# 
-run 10000
-# write to RAM:: address: 7fd  data:  46 
-# 
-# sending: a5
-# sending: 02
-# write to RAM:: address: 7fc  data:  73 
-# 
-# sending: 04
-# write to RAM:: address: 7fb  data: 139 
-# 
-# write to RAM:: address: 7fa  data:  18 
-# 
-# sending: 06
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 12:12:47 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 12:12:47 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 12:12:51 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/CB2/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  67 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fd  data:  52 
-# 
-# write to RAM:: address: 7fc  data:  92 
-# 
-vlog -novopt *src/*sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 12:19:59 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module fifo_tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	fifo_tb
-# 	tb
-# End time: 12:19:59 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -novopt work.tb
-# vsim 
-# Start time: 12:20:02 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/CB2/*
-add wave -position end sim:/tb/tas_0/A1/*
 run 20000
 # sending: a5
 # sending: 3a
@@ -1443,38 +162,29 @@ run 20000
 # sending: 14
 # sending: 1e
 # sending: 28
-# write to RAM:: address: 7fd  data:  52 
-# 
-# write to RAM:: address: 7fc  data:  92 
+# write to RAM:: address: 7fe  data:  25 
 # 
 # sending: a5
 # sending: 02
-# write to RAM:: address: 7fb  data:  70 
-# 
-# write to RAM:: address: 7fa  data: 134 
-# 
 # sending: 04
-# write to RAM:: address: 7f9  data:  46 
-# 
 # sending: 06
-# write to RAM:: address: 7f8  data:  54 
-# 
-run 10000
-# write to RAM:: address: 7f7  data: 120 
+run 20000
+# write to RAM:: address: 7fd  data:  58 
 # 
 # sending: 08
 # sending: c3
 # sending: 0a
 # sending: 0c
 # sending: 0e
-# write to RAM:: address: 7f6  data:   8 
-# 
-# write to RAM:: address: 7f5  data:  64 
-# 
 # sending: 10
-vsim -novopt work.tb
+# write to RAM:: address: 7fc  data:  15 
+# 
+# sending: a5
+# sending: 12
+# sending: 14
+vsim work.tb
 # vsim 
-# Start time: 12:22:57 on Jun 11,2014
+# Start time: 13:50:04 on Jun 11,2014
 # Loading sv_std.std
 # Loading work.tb
 # Loading work.tas
@@ -1484,9 +194,7 @@ vsim -novopt work.tb
 # Loading work.ctrl_blk_2
 # Loading work.averager
 # Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/*
-add wave -position end sim:/tb/tas_0/A1/*
-run 10000
+run 200000
 # sending: a5
 # sending: 3a
 # sending: 55
@@ -1499,7 +207,233 @@ run 10000
 # sending: 14
 # sending: 1e
 # sending: 28
-# write to RAM:: address: 7fd  data:  52 
+# write to RAM:: address: 7fe  data:  25 
 # 
-# write to RAM:: address: 7fc  data:  92 
+# sending: a5
+# sending: 02
+# sending: 04
+# sending: 06
+# write to RAM:: address: 7fd  data:  58 
 # 
+# sending: 08
+# sending: c3
+# sending: 0a
+# sending: 0c
+# sending: 0e
+# sending: 10
+# write to RAM:: address: 7fc  data:  15 
+# 
+# sending: a5
+# sending: 12
+# sending: 14
+# sending: 16
+# sending: 18
+# sending: c3
+# sending: 1a
+# sending: 1c
+# write to RAM:: address: 7fb  data:  68 
+# 
+# sending: 1e
+# sending: 1f
+# sending: a5
+# sending: 7f
+# sending: 7f
+# sending: 7f
+# sending: 7f
+# write to RAM:: address: 7fa  data: 114 
+# 
+# sending: a5
+# sending: 22
+# sending: 24
+# sending: 26
+# sending: 28
+# sending: c3
+# sending: 2a
+# write to RAM:: address: 7f9  data:  54 
+# 
+# sending: 2c
+# sending: 2e
+# sending: 30
+# sending: a5
+# sending: 02
+# write to RAM:: address: 7f8  data:  66 
+# 
+# sending: 04
+# sending: 06
+# sending: 08
+# sending: 83
+# sending: a5
+# sending: c3
+# sending: a5
+# write to RAM:: address: 7f7  data: 103 
+# 
+# sending: c3
+# sending: a5
+# sending: 12
+# sending: 14
+# write to RAM:: address: 7f6  data: 111 
+# 
+# sending: 16
+# sending: 18
+# sending: c1
+# sending: a5
+# sending: a5
+# sending: c3
+# write to RAM:: address: 7f5  data: 103 
+# 
+# sending: c3
+# sending: a1
+# sending: a5
+# sending: c3
+# sending: c3
+# sending: a5
+# write to RAM:: address: 7f4  data:  20 
+# 
+# sending: a5
+# sending: 22
+# sending: 24
+# sending: 26
+# sending: 28
+# sending: c6
+# sending: c3
+# write to RAM:: address: 7f3  data:  84 
+# 
+# sending: a5
+# sending: 46
+# sending: 48
+# sending: c2
+# sending: a5
+# write to RAM:: address: 7f2  data: 174 
+# 
+# sending: c3
+# sending: a5
+# sending: c3
+vsim work.tb
+# vsim 
+# Start time: 13:50:33 on Jun 11,2014
+# Loading sv_std.std
+# Loading work.tb
+# Loading work.tas
+# Loading work.shift_reg
+# Loading work.ctrl_blk_50
+# Loading work.fifo
+# Loading work.ctrl_blk_2
+# Loading work.averager
+# Loading work.ram_addr_cntr
+add wave -position end sim:/tb/tas_0/*
+add wave -position end sim:/tb/tas_0/CB50/*
+add wave -position end sim:/tb/tas_0/CB2/*
+run 200000
+# sending: a5
+# sending: 3a
+# sending: 55
+# sending: 43
+# sending: 3c
+# write to RAM:: address: 7ff  data:  67 
+# 
+# sending: a5
+# sending: 0a
+# sending: 14
+# sending: 1e
+# sending: 28
+# write to RAM:: address: 7fe  data:  25 
+# 
+# sending: a5
+# sending: 02
+# sending: 04
+# sending: 06
+# write to RAM:: address: 7fd  data:  58 
+# 
+# sending: 08
+# sending: c3
+# sending: 0a
+# sending: 0c
+# sending: 0e
+# sending: 10
+# write to RAM:: address: 7fc  data:  15 
+# 
+# sending: a5
+# sending: 12
+# sending: 14
+# sending: 16
+# sending: 18
+# sending: c3
+# sending: 1a
+# sending: 1c
+# write to RAM:: address: 7fb  data:  68 
+# 
+# sending: 1e
+# sending: 1f
+# sending: a5
+# sending: 7f
+# sending: 7f
+# sending: 7f
+# sending: 7f
+# write to RAM:: address: 7fa  data: 114 
+# 
+# sending: a5
+# sending: 22
+# sending: 24
+# sending: 26
+# sending: 28
+# sending: c3
+# sending: 2a
+# write to RAM:: address: 7f9  data:  54 
+# 
+# sending: 2c
+# sending: 2e
+# sending: 30
+# sending: a5
+# sending: 02
+# write to RAM:: address: 7f8  data:  66 
+# 
+# sending: 04
+# sending: 06
+# sending: 08
+# sending: 83
+# sending: a5
+# sending: c3
+# sending: a5
+# write to RAM:: address: 7f7  data: 103 
+# 
+# sending: c3
+# sending: a5
+# sending: 12
+# sending: 14
+# write to RAM:: address: 7f6  data: 111 
+# 
+# sending: 16
+# sending: 18
+# sending: c1
+# sending: a5
+# sending: a5
+# sending: c3
+# write to RAM:: address: 7f5  data: 103 
+# 
+# sending: c3
+# sending: a1
+# sending: a5
+# sending: c3
+# sending: c3
+# sending: a5
+# write to RAM:: address: 7f4  data:  20 
+# 
+# sending: a5
+# sending: 22
+# sending: 24
+# sending: 26
+# sending: 28
+# sending: c6
+# sending: c3
+# write to RAM:: address: 7f3  data:  84 
+# 
+# sending: a5
+# sending: 46
+# sending: 48
+# sending: c2
+# sending: a5
+# write to RAM:: address: 7f2  data: 174 
+# 
+# sending: c3
+# sending: a5
+# sending: c3

@@ -38,22 +38,22 @@ integer i;
 
 // use internal full and empty flags
 wire full_cmp = (rd_msb != wr_msb) & (rd_ptr == wr_ptr); 
-reg full_delay;
+reg full_sync;
 
 wire empty_cmp = (rd_addr == wr_addr);
-reg empty_delay;
+reg empty_sync;
 
 // use an internal memory so we can read and write at the same time
 reg [width-1:0] memory [depth-1:0];
 
 /// assignments
-// empty is the XOR'ed output of a ff synced to rd_clk with
+// empty is the output of a ff synced to rd_clk with
 // input and compared to wr and rd ptr
 // empty needs to be deasserted when write happens
-assign empty = empty_cmp & !empty_delay;
+assign empty = empty_cmp | empty_sync;
 
 // full is like empty, but with wr_clk
-assign full = full_cmp & !full_delay;
+assign full = full_cmp | full_sync;
 
 assign data_out = memory[rd_ptr];
   
@@ -74,18 +74,18 @@ end
 // we want to sync empty with rd_clk, hence flip flop
 always_ff @(posedge rd_clk, negedge reset_n) begin
   if (!reset_n)
-    empty_delay <= 1;
+    empty_sync <= 1;
   else
-    empty_delay <= empty_cmp;
+    empty_sync <= empty_cmp;
 end
 
 // output delayed full
 // we want to sync full with wr_clk, hence flip flop
 always_ff @(posedge wr_clk, negedge reset_n) begin
   if (!reset_n)
-    full_delay <= 0;
+    full_sync <= 0;
   else
-    full_delay <= full_cmp;
+    full_sync <= full_cmp;
 end
 
 // adder for rd_ptr

@@ -1,2 +1,2 @@
-run 100000
-quit
+run 180000
+quit -f

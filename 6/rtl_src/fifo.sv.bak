@@ -47,16 +47,13 @@ reg empty_delay;
 reg [width-1:0] memory [depth-1:0];
 
 /// assignments
-// empty is the XOR'ed output of a ff synced to rd_clk with
+// empty is the output of a ff synced to rd_clk with
 // input and compared to wr and rd ptr
 // empty needs to be deasserted when write happens
-
-// this asserts empty for one clk
-assign empty = empty_cmp & !empty_delay;
+assign empty = empty_cmp | empty_delay;
 
 // full is like empty, but with wr_clk
-// this asserts full for one clk
-assign full = full_cmp & !full_delay;
+assign full = full_cmp | full_delay;
 
 assign data_out = memory[rd_ptr];
   
