@@ -1,3 +1,9 @@
+//        Author: Jordan Bayles
+//    Assignment: HW6 
+//        Course: ECE 474 - VLSI System Design
+//   Description: 50 MHz subsystem control system
+//                Decides whether or not the FIFO takes in data each clock cycle
+
 module ctrl_blk_50 (
         input a5_or_c3,
         input data_ena,

@@ -63,7 +63,7 @@ always_ff @(posedge clk_50, negedge reset_n) begin
     
     else if (seen_header) begin
       // if it's the last byte in the packet reset the header flag 
-      if (cur_byte_ps == byte_3)
+      if ((cur_byte_ps == byte_3) & (cur_byte_ns == byte_0))
         seen_header <= 0;
     end 
   end
