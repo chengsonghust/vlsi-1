@@ -29,7 +29,7 @@ reg [10:0] data;
 // since we have four data points this is basically "data >> 2"
 assign acc_out = data[10:2];
 
-always_ff @ (posedge clk, negedge reset_n) begin
+always_ff @(posedge clk, negedge reset_n) begin
   if (!reset_n) begin
     data <= 0;
   end

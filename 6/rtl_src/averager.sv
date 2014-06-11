@@ -5,7 +5,7 @@
 //                to provide the average of four values
 
 module averager (
-        input  data_in,
+        input  [7:0] data_in,
         input  restart,
         input  rd_fifo,
         input  clk,

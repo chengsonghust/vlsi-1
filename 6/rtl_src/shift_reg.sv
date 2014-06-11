@@ -20,24 +20,15 @@ wire [2:0] next_bit;
 reg [7:0] ps;
 wire [7:0] ns;
 
-wire on_last_bit;
-assign on_last_bit = (current_bit == 7);
-
+assign ns = {ps[6:0], serial_data};
 assign parallel_data = ps;
-
-// pseudo state machines; calculate the next bit and next
-// value of the shift register
-assign ns = on_last_bit ? 0 : {serial_data, ps[6:1]};
-assign next_bit = on_last_bit ? 0 : current_bit + 1;
 
 // set current from future and reset data
 always_ff @(posedge clk, negedge reset_n) begin
     if (!reset_n) begin
       ps <= 0;
-      current_bit <= 0;
     end else if (data_ena) begin
       ps <= ns;
-      current_bit <= next_bit;
   end
 end
 
