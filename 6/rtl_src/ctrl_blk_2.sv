@@ -38,11 +38,8 @@ reg restart_avgr;
 // assign directly for timing
 assign rd_fifo = !empty_flag;
 
-// flag for calling to restart averager
 // flag logic
 always_ff @(posedge clk, negedge reset_n) begin
-  // if the fifo is not empty, read from it
-  //rd_fifo <= should_read;
   
   // we write to the ram if the accumulator is done doing its thing
   wr_ram <= ram_write;
@@ -72,7 +69,7 @@ always_comb begin
   endcase
 end
 
-always_ff @ (posedge clk, negedge reset_n) begin
+always_ff @(posedge clk, negedge reset_n) begin
   if (!reset_n)
     avgr_ps <= avgr_idle;
   else

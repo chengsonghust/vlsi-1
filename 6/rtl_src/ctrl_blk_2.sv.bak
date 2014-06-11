@@ -72,7 +72,7 @@ always_comb begin
   endcase
 end
 
-always_ff @ (posedge clk, negedge reset_n) begin
+always_ff @(posedge clk, negedge reset_n) begin
   if (!reset_n)
     avgr_ps <= avgr_idle;
   else
@@ -83,12 +83,11 @@ end
 always_comb begin
   avgr_cnt_ns = 0;
 
-  if (wr_ram) begin
+  if (wr_ram)
     avgr_cnt_ns = 0;
-
-  else if (rd_fifo) begin
+  else if (rd_fifo)
       avgr_cnt_ns = avgr_cnt_ps + 1;
-  end else
+  else
     avgr_cnt_ns = avgr_cnt_ps;
 end
 

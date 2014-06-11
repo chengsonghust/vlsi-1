@@ -12,23 +12,11 @@ module shift_reg (
         output [7:0] parallel_data
         );
 
-// valid bits are 0-7
-reg [2:0] current_bit;
-wire [2:0] next_bit;
-
-// current and next registers
-reg [7:0] ps;
-wire [7:0] ns;
-
-assign ns = {serial_data, ps[6:0]};
-assign parallel_data = ps;
-
-// set current from future and reset data
 always_ff @(posedge clk, negedge reset_n) begin
     if (!reset_n) begin
-      ps <= 0;
+      parallel_data <= '0;
     end else if (data_ena) begin
-      ps <= ns;
+      parallel_data <= {serial_data, ps[7:1]};
   end
 end
 

@@ -58,12 +58,13 @@ always_ff @(posedge clk_50, negedge reset_n) begin
    end
   else begin
     // if this is a header, just make note of it.
-    if (a5_or_c3)
+    // NOTE that we may see a5 or c3 on parallel data while it is building a packet!
+    if (a5_or_c3 & byte_assembled)
       seen_header <= 1;
     
     else if (seen_header) begin
       // if it's the last byte in the packet reset the header flag 
-      if ((cur_byte_ps == byte_3) & (cur_byte_ns == byte_0))
+      if ((cur_byte_ps == byte_3) && writeable_byte)
         seen_header <= 0;
     end 
   end
