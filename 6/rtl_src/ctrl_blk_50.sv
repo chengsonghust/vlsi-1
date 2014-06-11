@@ -42,7 +42,7 @@ end
 wire writeable_byte;
 reg writeable_delay;
 assign writeable_byte = (seen_header & byte_assembled);
-assign wr_fifo = writeable_byte ^ writeable_delay;
+assign wr_fifo = writeable_byte & !writeable_delay;
 
 always_ff @(posedge clk_50, negedge reset_n) begin
   if (!reset_n)

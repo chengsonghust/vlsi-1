@@ -10,7 +10,7 @@ module fifo (
         input wr,                  // write enable
         input rd,                  // read enable
         input [7:0] data_in,       // data in
-        output reg [7:0] data_out, // data out
+        output[7:0] data_out,      // data out
         output empty,              // empty flag
         output full                // full flag
         );
@@ -18,53 +18,45 @@ module fifo (
 /// parameters
 parameter width = 8;               // 8-bit wide
 parameter depth = 8;               // 8-byte deep
-parameter pointer_width = 3;       // width = ceil(log_2(depth))
+parameter ptr_width = 3;           // width = ceil(log_2(depth))
 
 /// internals
-// pointers
-reg [pointer_width:0] rd_address, wr_address;
-wire [pointer_width-1:0] rd_pointer, wr_pointer;
-wire rd_msb, wr_msb;
+// addresses
+reg [ptr_width:0] rd_addr;
+reg [ptr_width:0] wr_addr;
+
+// the ptr to the actual data is the LSBs of the full address
+wire [ptr_width-1:0] rd_ptr = rd_addr[ptr_width-1:0];
+wire [ptr_width-1:0] wr_ptr = wr_addr[ptr_width-1:0];
+
+// keep track of the MSB seperately for compares
+wire rd_msb = rd_addr[ptr_width];
+wire wr_msb = wr_addr[ptr_width];
 
 // this is an index for a C-style loop. Synthesizes away though.
 integer i;
 
 // use internal full and empty flags
-wire full_cmp;
+wire full_cmp = (rd_msb != wr_msb) & (rd_ptr == wr_ptr); 
 reg full_delay;
 
-wire empty_cmp;
+wire empty_cmp = (rd_addr == wr_addr);
 reg empty_delay;
 
 // use an internal memory so we can read and write at the same time
 reg [width-1:0] memory [depth-1:0];
 
 /// assignments
-// compare pointers
-assign full_cmp = (rd_msb != wr_msb) & (rd_pointer == wr_pointer);
-assign empty_cmp = (rd_address == wr_address);
-
 // empty is the XOR'ed output of a ff synced to rd_clk with
-// input and compared to wr and rd pointer
+// input and compared to wr and rd ptr
 // empty needs to be deasserted when write happens
 assign empty = empty_cmp & !empty_delay;
 
 // full is like empty, but with wr_clk
 assign full = full_cmp & !full_delay;
 
-// the pointer to the actual data is the LSBs of the full address
-assign rd_pointer = rd_address[pointer_width-1:0];
-assign wr_pointer = wr_address[pointer_width-1:0];
-
-// keep track of the MSB seperately for compares
-assign rd_msb = rd_address[pointer_width];
-assign wr_msb = wr_address[pointer_width];
-
-// reading
-always_comb begin
-  data_out = memory[rd_pointer];
-end
-
+assign data_out = memory[rd_ptr];
+  
 // writing
 always_ff @(posedge wr_clk, negedge reset_n) begin
   if (!reset_n) begin
@@ -74,7 +66,7 @@ always_ff @(posedge wr_clk, negedge reset_n) begin
   end
 
   else if (wr) begin
-    memory[wr_pointer] <= data_in;
+    memory[wr_ptr] <= data_in;
   end
 end
 
@@ -96,20 +88,20 @@ always_ff @(posedge wr_clk, negedge reset_n) begin
     full_delay <= full_cmp;
 end
 
-// adder for rd_pointer
+// adder for rd_ptr
 always_ff @(posedge rd_clk, negedge reset_n) begin
   if (!reset_n)
-    rd_address <= 4'b0;
+    rd_addr <= 4'b0;
   else if (rd)
-    rd_address <= rd_address + 1;
+    rd_addr <= rd_addr + 1;
 end
 
-// adder for wr_pointer
+// adder for wr_ptr
 always_ff @(posedge wr_clk, negedge reset_n) begin
   if (!reset_n)
-    wr_address <= 4'b0;
+    wr_addr <= 4'b0;
   else if (wr)
-    wr_address <= wr_address + 1;
+    wr_addr <= wr_addr + 1;
 end
 
 endmodule

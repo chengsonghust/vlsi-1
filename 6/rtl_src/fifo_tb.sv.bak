@@ -6,7 +6,7 @@
 //
 `timescale 1ns/1ns
 
-module fifo_tb; //testbench module for the fifo
+module tb; //testbench module for the fifo
 
 integer input_file, output_file, in, out;
 
