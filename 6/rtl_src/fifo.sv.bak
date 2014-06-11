@@ -47,10 +47,10 @@ assign empty_cmp = (rd_address == wr_address);
 // empty is the XOR'ed output of a ff synced to rd_clk with
 // input and compared to wr and rd pointer
 // empty needs to be deasserted when write happens
-assign empty = empty_cmp & !empty_delay;
+assign empty = empty_cmp ^ empty_delay;
 
 // full is like empty, but with wr_clk
-assign full = full_cmp & !full_delay;
+assign full = full_cmp ^ full_delay;
 
 // the pointer to the actual data is the LSBs of the full address
 assign rd_pointer = rd_address[pointer_width-1:0];

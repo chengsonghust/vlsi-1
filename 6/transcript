@@ -1,45 +1,3 @@
-# OpenFile ./rtl_src/ram_addr_cntr.sv
-ls
-# README
-# bin
-# clean.sh
-# command.log
-# default.svf
-# dofile
-# doit
-# logs
-# output_data
-# reports
-# rtl_src
-# sdfout
-# tb_src
-# transcript
-# turnin
-# vectors
-# vlogout
-# vsim.wlf
-# work
-vlog -novopt *_src/*.sv
-# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 02:33:08 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
-# -- Compiling module averager
-# -- Compiling module ctrl_blk_2
-# -- Compiling module ctrl_blk_50
-# -- Compiling module fifo
-# -- Compiling module tb
-# -- Compiling module ram_addr_cntr
-# -- Compiling module shift_reg
-# -- Compiling module tas
-# ** Warning: tb_src/tb.sv(1): (vlog-2275) 'tb' already exists and will be overwritten.
-# 
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 02:33:08 on Jun 11,2014, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-vsim work.tb -novopt
 # //  ModelSim PE Student Edition 10.3b Jun  2 2014 
 # //
 # //  Copyright 1991-2014 Mentor Graphics Corporation
@@ -53,8 +11,8 @@ vsim work.tb -novopt
 # // THE ModelSim PE Student Edition IS NOT A SUPPORTED PRODUCT.
 # // FOR HIGHER EDUCATION PURPOSES ONLY
 # //
-# vsim .\rtl_src\ram_addr_cntr.sv 
-# Start time: 02:33:15 on Jun 11,2014
+# vsim work.tb 
+# Start time: 03:49:23 on Jun 11,2014
 # Loading sv_std.std
 # Loading work.tb
 # Loading work.tas
@@ -64,71 +22,51 @@ vsim work.tb -novopt
 # Loading work.ctrl_blk_2
 # Loading work.averager
 # Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/*
-add wave -position end sim:/tb/tas_0/CB50/*
-add wave -position end sim:/tb/tas_0/RAC1/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  16 
+# ** Error: (vsim-3033) vlogout/tas.gate.v(39): Instantiation of 'DFFARX1' failed. The design unit was not found.
 # 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:  21 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(41): Instantiation of 'OR2X1' failed. The design unit was not found.
 # 
-# Can't move the Now cursor.
-run 10000
-# write to RAM:: address: 7fd  data:   0 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(42): Instantiation of 'NOR4X0' failed. The design unit was not found.
 # 
-# sending: a5
-# sending: 02
-# write to RAM:: address: 7fc  data:  16 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(44): Instantiation of 'NAND2X0' failed. The design unit was not found.
 # 
-# sending: 04
-# write to RAM:: address: 7fb  data:  14 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(45): Instantiation of 'NOR4X0' failed. The design unit was not found.
 # 
-# write to RAM:: address: 7fa  data:   0 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(47): Instantiation of 'NAND3X0' failed. The design unit was not found.
 # 
-# sending: 06
-run 10000
-# write to RAM:: address: 7f9  data:  21 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(49): Instantiation of 'NOR2X0' failed. The design unit was not found.
 # 
-# sending: 08
-# sending: c3
-# sending: 0a
-# sending: 0c
-# sending: 0e
-# write to RAM:: address: 7f8  data:  14 
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# ** Error: (vsim-3033) vlogout/tas.gate.v(50): Instantiation of 'NAND2X0' failed. The design unit was not found.
 # 
-# write to RAM:: address: 7f7  data:  16 
-# 
-# sending: 10
-# write to RAM:: address: 7f6  data:  21 
-# 
-run 10000
-# write to RAM:: address: 7f5  data:  76 
-# 
-# sending: a5
-# sending: 12
-# write to RAM:: address: 7f2  data:  16 
-# 
-# sending: 14
-# write to RAM:: address: 7f1  data:  14 
-# 
-quit -sim
-vsim rtl_src/ctrl_blk_50.sv -novopt
-# OpenFile rtl_src/ctrl_blk_50.sv
-OpenFile rtl_src/ctrl_blk_50.sv
-vlog -novopt *_src/*.sv
+#         Region: /tb/tas_0
+#         Searched libraries:
+#             C:/Users/Jordan.thor/Documents/GitHub/vlsi/6/work
+# Error loading design
+vlog *src/*sv
 # Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
-# Start time: 02:48:41 on Jun 11,2014
-# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
+# Start time: 03:51:30 on Jun 11,2014
+# vlog -reportprogress 300 rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
 # -- Compiling module averager
 # -- Compiling module ctrl_blk_2
 # -- Compiling module ctrl_blk_50
@@ -143,67 +81,187 @@ vlog -novopt *_src/*.sv
 # 
 # Top level modules:
 # 	tb
-# End time: 02:48:41 on Jun 11,2014, Elapsed time: 0:00:00
+# End time: 03:51:30 on Jun 11,2014, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
-vsim work.tb -novopt
-# vsim 
-# Start time: 02:48:46 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/CB50/*
-add wave -position end sim:/tb/tas_0/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  16 
+vlog *src/*sv -nopvopt
+# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
+# ** Error: (vlog-1902) Option "-nopvopt" is either unknown, requires an argument, or was given with a bad argument.
 # 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:   5 
-# 
-vsim work.tb -novopt
-# vsim 
-# Start time: 02:49:22 on Jun 11,2014
-# Loading sv_std.std
-# Loading work.tb
-# Loading work.tas
-# Loading work.shift_reg
-# Loading work.ctrl_blk_50
-# Loading work.fifo
-# Loading work.ctrl_blk_2
-# Loading work.averager
-# Loading work.ram_addr_cntr
-add wave -position end sim:/tb/tas_0/CB50/*
-add wave -position end sim:/tb/tas_0/RAC1/*
-add wave -position end sim:/tb/tas_0/*
-run 10000
-# sending: a5
-# sending: 3a
-# sending: 55
-# sending: 43
-# sending: 3c
-# write to RAM:: address: 7ff  data:  16 
-# 
-# sending: a5
-# sending: 0a
-# sending: 14
-# sending: 1e
-# sending: 28
-# write to RAM:: address: 7fe  data:   5 
-# 
-# Can't move the Now cursor.
-# End time: 02:50:15 on Jun 11,2014, Elapsed time: 0:00:53
+# Use the -help option for complete vlog usage.
+# End time: 03:51:33 on Jun 11,2014, Elapsed time: 0:00:00
 # Errors: 1, Warnings: 0
+# C:/Modeltech_pe_edu_10.3b/win32pe_edu/vlog failed.
+vlog *src/*sv -novopt
+# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
+# Start time: 03:51:36 on Jun 11,2014
+# vlog -reportprogress 300 rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv -novopt 
+# -- Compiling module averager
+# -- Compiling module ctrl_blk_2
+# -- Compiling module ctrl_blk_50
+# -- Compiling module fifo
+# -- Compiling module tb
+# -- Compiling module ram_addr_cntr
+# -- Compiling module shift_reg
+# -- Compiling module tas
+# ** Warning: tb_src/tb.sv(1): (vlog-2275) 'tb' already exists and will be overwritten.
+# 
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# End time: 03:51:36 on Jun 11,2014, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vsim work.tb
+# vsim 
+# Start time: 03:51:38 on Jun 11,2014
+# Loading sv_std.std
+# Loading work.tb
+# Loading work.tas
+# Loading work.shift_reg
+# Loading work.ctrl_blk_50
+# Loading work.fifo
+# Loading work.ctrl_blk_2
+# Loading work.averager
+# Loading work.ram_addr_cntr
+add wave -position end sim:/tb/tas_0/*
+add wave -position end sim:/tb/tas_0/A1/*
+run 10000
+# sending: a5
+# sending: 3a
+# sending: 55
+# sending: 43
+# sending: 3c
+# write to RAM:: address: 7ff  data:  16 
+# 
+# sending: a5
+# sending: 0a
+# sending: 14
+# sending: 1e
+# sending: 28
+# write to RAM:: address: 7fe  data:   5 
+# 
+# write to RAM:: address: 7fd  data:  10 
+# 
+run 100000
+# sending: a5
+# sending: 02
+# write to RAM:: address: 7fc  data:   7 
+# 
+# sending: 04
+# write to RAM:: address: 7fb  data:  41 
+# 
+# write to RAM:: address: 7fa  data:  10 
+# 
+# sending: 06
+# write to RAM:: address: 7f9  data:   0 
+# 
+# write to RAM:: address: 7f8  data:  41 
+# 
+# sending: 08
+# sending: c3
+# sending: 0a
+# sending: 0c
+# sending: 0e
+# write to RAM:: address: 7f7  data:   3 
+# 
+# sending: 10
+# write to RAM:: address: 7f6  data:   3 
+# 
+# write to RAM:: address: 7f5  data:   4 
+# 
+# sending: a5
+# sending: 12
+# write to RAM:: address: 7f4  data:   3 
+# 
+# write to RAM:: address: 7f3  data:   4 
+# 
+# sending: 14
+# write to RAM:: address: 7f2  data:   4 
+# 
+# sending: 16
+# sending: 18
+# sending: c3
+# sending: 1a
+# sending: 1c
+# write to RAM:: address: 7f1  data:  22 
+# 
+# write to RAM:: address: 7ef  data:   6 
+# 
+# sending: 1e
+# write to RAM:: address: 7ee  data:   7 
+# 
+# sending: 1f
+# write to RAM:: address: 7ed  data:   7 
+# 
+# write to RAM:: address: 7ec  data:   7 
+# 
+# sending: a5
+# sending: 7f
+# sending: 7f
+# sending: 7f
+# sending: 7f
+# write to RAM:: address: 7eb  data:  31 
+# 
+# write to RAM:: address: 7ea  data: 158 
+# 
+# sending: a5
+# sending: 22
+# write to RAM:: address: 7e8  data:  31 
+# 
+# sending: 24
+# sending: 26
+# sending: 28
+# write to RAM:: address: 7e7  data:   9 
+# 
+# sending: c3
+# sending: 2a
+# write to RAM:: address: 7e6  data:  10 
+# 
+# sending: 2c
+# write to RAM:: address: 7e5  data:   9 
+# 
+# write to RAM:: address: 7e4  data:  11 
+# 
+# sending: 2e
+# write to RAM:: address: 7e3  data:  53 
+# 
+# sending: 30
+# write to RAM:: address: 7e1  data:  11 
+# 
+# write to RAM:: address: 7e0  data:  10 
+# 
+# sending: a5
+# sending: 02
+# write to RAM:: address: 7df  data:  12 
+# 
+# write to RAM:: address: 7de  data:  36 
+# 
+# sending: 04
+# write to RAM:: address: 7dc  data:   0 
+# 
+# sending: 06
+# write to RAM:: address: 7db  data:   1 
+# 
+# write to RAM:: address: 7da  data:   1 
+# 
+# sending: 08
+# sending: 83
+# sending: a5
+# sending: c3
+# sending: a5
+# write to RAM:: address: 7d9  data:   2 
+# 
+# write to RAM:: address: 7d8  data:   1 
+# 
+# sending: c3
+# write to RAM:: address: 7d7  data:  48 
+# 
+# sending: a5
+# sending: 12
+# write to RAM:: address: 7d6  data:  41 
+# 
+# write to RAM:: address: 7d5  data:  41 
+# 
+# sending: 14
+# write to RAM:: address: 7d4  data:   4 
+# 
