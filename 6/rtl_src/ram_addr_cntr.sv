@@ -13,7 +13,7 @@ module ram_addr_cntr (
 reg [10:0] address;
 
 // high address, all ones
-parameter start_address = 10'h7FF;
+parameter start_address = 11'h7FF;
 
 assign ram_addr = address;
 

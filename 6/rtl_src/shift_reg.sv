@@ -20,7 +20,7 @@ wire [2:0] next_bit;
 reg [7:0] ps;
 wire [7:0] ns;
 
-assign ns = {ps[6:0], serial_data};
+assign ns = {serial_data, ps[7:1]};
 assign parallel_data = ps;
 
 // set current from future and reset data

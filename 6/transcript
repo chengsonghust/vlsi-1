@@ -1,38 +1,183 @@
-# vsim +nowarnTFMPC +nowarn3448 -do dofile -c -quiet -sdfmax /tb/tas_0=sdfout/tas.gate.sdf -t 1ps work.tb 
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Error: vlogout/tas.gate.v(28): Port 'p1' not found in module (1st connection).
-# ** Error: vlogout/tas.gate.v(28): Port 'p2' not found in module (2nd connection).
-# ** Error: vlogout/tas.gate.v(28): Port 'p3' not found in module (3rd connection).
-# ** Error: vlogout/tas.gate.v(28): Port 'p4' not found in module (4th connection).
-# ** Error: vlogout/tas.gate.v(28): Port 'p5' not found in module (5th connection).
-# ** Error: vlogout/tas.gate.v(30): Port 'p1' not found in module (1st connection).
-# ** Error: vlogout/tas.gate.v(30): Port 'p2' not found in module (2nd connection).
-# ** Error: vlogout/tas.gate.v(30): Port 'p3' not found in module (3rd connection).
-# ** Error: vlogout/tas.gate.v(30): Port 'p4' not found in module (4th connection).
-# ** Error: vlogout/tas.gate.v(30): Port 'p5' not found in module (5th connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p1' not found in module (1st connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p2' not found in module (2nd connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p3' not found in module (3rd connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p4' not found in module (4th connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p5' not found in module (5th connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p6' not found in module (6th connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p7' not found in module (7th connection).
-# ** Error: vlogout/tas.gate.v(32): Port 'p8' not found in module (8th connection).
-# ** Error: vlogout/tas.gate.v(34): Port 'p1' not found in module (1st connection).
-# ** Error: vlogout/tas.gate.v(34): Port 'p2' not found in module (2nd connection).
-# ** Error: vlogout/tas.gate.v(34): Port 'p3' not found in module (3rd connection).
-# ** Error: vlogout/tas.gate.v(34): Port 'p4' not found in module (4th connection).
-# ** Error: vlogout/tas.gate.v(34): Port 'p5' not found in module (5th connection).
-# ** Error: vlogout/tas.gate.v(34): Port 'p6' not found in module (6th connection).
-# ** Error: vlogout/tas.gate.v(36): Port 'p1' not found in module (1st connection).
-# ** Error: vlogout/tas.gate.v(36): Port 'p2' not found in module (2nd connection).
-# ** Error: vlogout/tas.gate.v(36): Port 'p3' not found in module (3rd connection).
-# ** Error: vlogout/tas.gate.v(36): Port 'p4' not found in module (4th connection).
-# ** Error: vlogout/tas.gate.v(36): Port 'p5' not found in module (5th connection).
-# ** Error: vlogout/tas.gate.v(36): Port 'p6' not found in module (6th connection).
-# ** Error: vlogout/tas.gate.v(38): Port 'p1' not found in module (1st connection).
-# ** Error: vlogout/tas.gate.v(38): Port 'p2' not found in module (2nd connection).
-# ** Error: vlogout/tas.gate.v(38): Port 'p3' not found in module (3rd connection).
-# ** Error: vlogout/tas.gate.v(38): Port 'p4' not found in module (4th connection).
-# Optimization failed
-# Error loading design
+# OpenFile ./rtl_src/ram_addr_cntr.sv
+ls
+# README
+# bin
+# clean.sh
+# command.log
+# default.svf
+# dofile
+# doit
+# logs
+# output_data
+# reports
+# rtl_src
+# sdfout
+# tb_src
+# transcript
+# turnin
+# vectors
+# vlogout
+# vsim.wlf
+# work
+vlog -novopt *_src/*.sv
+# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
+# Start time: 02:18:56 on Jun 11,2014
+# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
+# -- Compiling module averager
+# -- Compiling module ctrl_blk_2
+# -- Compiling module ctrl_blk_50
+# -- Compiling module fifo
+# -- Compiling module tb
+# -- Compiling module ram_addr_cntr
+# -- Compiling module shift_reg
+# -- Compiling module tas
+# ** Warning: tb_src/tb.sv(1): (vlog-2275) 'tb' already exists and will be overwritten.
+# 
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# End time: 02:18:56 on Jun 11,2014, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vsim work.tb -novopt
+# //  ModelSim PE Student Edition 10.3b Jun  2 2014 
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# // NOT FOR CORPORATE OR PRODUCTION USE.
+# // THE ModelSim PE Student Edition IS NOT A SUPPORTED PRODUCT.
+# // FOR HIGHER EDUCATION PURPOSES ONLY
+# //
+# vsim .\rtl_src\ram_addr_cntr.sv 
+# Start time: 02:19:02 on Jun 11,2014
+# Loading sv_std.std
+# Loading work.tb
+# Loading work.tas
+# Loading work.shift_reg
+# Loading work.ctrl_blk_50
+# Loading work.fifo
+# Loading work.ctrl_blk_2
+# Loading work.averager
+# Loading work.ram_addr_cntr
+add wave -position end sim:/tb/tas_0/CB50/*
+add wave -position end sim:/tb/tas_0/*
+run 10000
+# sending: a5
+# sending: 3a
+# sending: 55
+# sending: 43
+# sending: 3c
+# write to RAM:: address: 7ff  data:  48 
+# 
+# sending: a5
+# sending: 0a
+# sending: 14
+# sending: 1e
+# sending: 28
+# write to RAM:: address: 7fe  data:  42 
+# 
+vlog -novopt *_src/*.sv
+# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
+# Start time: 02:29:25 on Jun 11,2014
+# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
+# -- Compiling module averager
+# -- Compiling module ctrl_blk_2
+# -- Compiling module ctrl_blk_50
+# -- Compiling module fifo
+# -- Compiling module tb
+# -- Compiling module ram_addr_cntr
+# -- Compiling module shift_reg
+# -- Compiling module tas
+# ** Warning: tb_src/tb.sv(1): (vlog-2275) 'tb' already exists and will be overwritten.
+# 
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# End time: 02:29:25 on Jun 11,2014, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vsim work.tb -novopt
+# vsim 
+# Start time: 02:29:28 on Jun 11,2014
+# Loading sv_std.std
+# Loading work.tb
+# Loading work.tas
+# Loading work.shift_reg
+# Loading work.ctrl_blk_50
+# Loading work.fifo
+# Loading work.ctrl_blk_2
+# Loading work.averager
+# Loading work.ram_addr_cntr
+add wave -position end sim:/tb/tas_0/CB50/*
+add wave -position end sim:/tb/tas_0/*
+run 10000
+# sending: a5
+# sending: 3a
+# sending: 55
+# sending: 43
+# sending: 3c
+# write to RAM:: address: 7ff  data:   0 
+# 
+# sending: a5
+# sending: 0a
+# sending: 14
+# sending: 1e
+# sending: 28
+# write to RAM:: address: 7fe  data:   0 
+# 
+# write to RAM:: address: 7fd  data:   0 
+# 
+vlog -novopt *_src/*.sv
+# Model Technology ModelSim PE Student Edition vlog 10.3b Compiler 2014.06 Jun  2 2014
+# Start time: 02:30:14 on Jun 11,2014
+# vlog -reportprogress 300 -novopt rtl_src/averager.sv rtl_src/ctrl_blk_2.sv rtl_src/ctrl_blk_50.sv rtl_src/fifo.sv rtl_src/fifo_tb.sv rtl_src/ram_addr_cntr.sv rtl_src/shift_reg.sv rtl_src/tas.sv tb_src/tb.sv 
+# -- Compiling module averager
+# -- Compiling module ctrl_blk_2
+# -- Compiling module ctrl_blk_50
+# -- Compiling module fifo
+# -- Compiling module tb
+# -- Compiling module ram_addr_cntr
+# -- Compiling module shift_reg
+# -- Compiling module tas
+# ** Warning: tb_src/tb.sv(1): (vlog-2275) 'tb' already exists and will be overwritten.
+# 
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# End time: 02:30:14 on Jun 11,2014, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vsim work.tb -novopt
+# vsim 
+# Start time: 02:30:19 on Jun 11,2014
+# Loading sv_std.std
+# Loading work.tb
+# Loading work.tas
+# Loading work.shift_reg
+# Loading work.ctrl_blk_50
+# Loading work.fifo
+# Loading work.ctrl_blk_2
+# Loading work.averager
+# Loading work.ram_addr_cntr
+add wave -position end sim:/tb/tas_0/CB50/*
+add wave -position end sim:/tb/tas_0/*
+run 10000
+# sending: a5
+# sending: 3a
+# sending: 55
+# sending: 43
+# sending: 3c
+# write to RAM:: address: 7ff  data:  16 
+# 
+# sending: a5
+# sending: 0a
+# sending: 14
+# sending: 1e
+# sending: 28
+# write to RAM:: address: 7fe  data:  21 
+# 
