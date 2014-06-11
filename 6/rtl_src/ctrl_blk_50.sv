@@ -13,7 +13,7 @@ module ctrl_blk_50 (
         );
 
 // specify the bit width of the enum to save space
-enum bit [2:0] {
+enum bit [1:0] {
   byte_0 = 'h0,
   byte_1 = 'h1,
   byte_2 = 'h2,
