@@ -12,11 +12,6 @@ do
   fi
 done
 
-#generate golden cases
-gcc gcd.c -o gcd
-./gcd
-rm ./gcd
-
 #remove previous results from /vectors and /reports
 rm -f /reports/*
 rm -f /vectors/output_*
@@ -27,11 +22,11 @@ if [ ! -d "work" ] ; then
 fi
 
 #compile verilog modules
-vlog rtl_src/gcd.sv
+vlog rtl_src/*.sv
 vlog tb_src/tb.sv
 
 #simulate the rtl design
-vsim tb -do dofile -quiet -c -t 1ps
+vsim work.tb -do dofile -quiet -c -t 1ps
 
 #rename the output_data
 mv vectors/output_data vectors/output_data_rtl
@@ -62,15 +57,15 @@ fi
 echo "latches found in output"
 
 #fix missing timing parameter in sdf file
-sed '/(HOLD (posedge RSTB)/d' < sdfout/gcd.gate.sdf  > sdfout/$$tempfile
-sed '/(HOLD (posedge SETB)/d' < sdfout/$$tempfile    > sdfout/gcd.gate.sdf
+sed '/(HOLD (posedge RSTB)/d' < sdfout/tas.gate.sdf  > sdfout/$$tempfile
+sed '/(HOLD (posedge SETB)/d' < sdfout/$$tempfile    > sdfout/tas.gate.sdf
 rm sdfout/$$tempfile
 
-#compile the gate level gcd
-vlog vlogout/gcd.gate.v -work work
+#compile the gate level tas
+vlog vlogout/*.gate.v -work work
 
-#simulate gate-level gcd
-vsim tb -do dofile +nowarnTFMPC -quiet -c -t 1ps
+#simulate gate-level tas
+vsim work.tb -do dofile +nowarnTFMPC -quiet -c -t 1ps
 
 #rename the output_data
 mv vectors/output_data vectors/output_data_gate
@@ -84,8 +79,8 @@ if [ $? -eq 0 ] ; then
 fi
 echo "errors detected in gate output"
 
-#simulate the gate-level gcd with the sdf file
-vsim tb -do dofile +nowarnTFMPC -quiet -c -sdfmax /tb/gcd_0=sdfout/gcd.gate.sdf -t 1ps  +nowarn3448
+#simulate the gate-level tas with the sdf file
+vsim work.tb -do dofile +nowarnTFMPC -quiet -c -sdfmax /tb/tas_0=sdfout/tas.gate.sdf -t 1ps  +nowarn3448
 
 #rename the output_data
 mv vectors/output_data vectors/output_data_gate_sdf

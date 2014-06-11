@@ -5,9 +5,9 @@ set hdlin_auto_save_templates true
 set hdlin_check_no_latch      true
 
 # Tell DC where to look for files
-read_sverilog  rtl_src/gcd.sv
+read_sverilog  rtl_src/*.sv
 
-current_design gcd
+current_design tas
 link
 
 #erase all attributes and constrains from the current design
@@ -52,11 +52,11 @@ set_driving_cell -lib_cell SDFFARX1 [remove_from_collection [all_inputs] [get_po
 # Indicate the capacitive loading on the outputs equal to 5 inv_2 inverter inputs
 set_load [expr 5 * [load_of saed90nm_typ/INVX2/IN]] [all_outputs]
 
-# Compile with completely disolved design
+# Compile with completely dissolved design
 compile -ungroup_all
 
 # Make sure we are at the top level
-set current_design  gcd 
+set current_design  tas 
 
 # Generate area and constraints reports on the optimized design
 report_area    > reports/area
@@ -74,6 +74,6 @@ report_hierarchy -full  -nosplit  > reports/cells_used
 check_design  > reports/check_design
 
 # Save the optimized design
-write -format verilog -hierarchy -output  vlogout/gcd.gate.v
-write_sdf sdfout/gcd.gate.sdf -context verilog
+write -format verilog -hierarchy -output  vlogout/tas.gate.v
+write_sdf sdfout/tas.gate.sdf -context verilog
 quit

@@ -4,7 +4,7 @@
 
 # data comes in as LSB
 
-files="work vectors/output* reports vlogout sdfout"
+files="transcript vsim.wlf work vectors/output* reports vlogout sdfout"
 for file in $files
 do
   rm -rf $file

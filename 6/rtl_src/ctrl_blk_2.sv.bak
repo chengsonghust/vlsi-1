@@ -11,9 +11,9 @@ module ctrl_blk_2 (
         input clk,
         input reset_n,
         
-        output reg restart_avg,
-        output reg rd_fifo,
-        output reg wr_ram
+        output restart_avg,
+        output rd_fifo,
+        output wr_ram
         );
 
 // reading the fifo into the averager

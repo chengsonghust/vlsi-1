@@ -1,20 +1,2 @@
- 
-****************************************
-Report : constraint
-        -min_delay
-Design : gcd
-Version: E-2010.12-SP2
-Date   : Wed May 28 11:54:53 2014
-****************************************
-
-
-                                                   Weighted
-    Group (min_delay/hold)       Cost     Weight     Cost
-    -----------------------------------------------------
-    my_clock (no fix_hold)       0.00      1.00      0.00
-    default                      0.00      1.00      0.00
-    -----------------------------------------------------
-    min_delay/hold                                   0.00
-This design has no constraints.
-
-1
+Error: Current design is not defined. (UID-4)
+0

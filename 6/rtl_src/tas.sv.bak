@@ -28,7 +28,6 @@ wire zero_sel;
 
 assign a5_or_c3 = (parallel_data == 8'hA5) || (parallel_data == 8'hC3);
 assign ram_data = acc_out[7:0];
-assign ram_wr_n = ram_ena;
 
 shift_reg S1 (clk_50,
               reset_n,

@@ -7,7 +7,8 @@ module ram_addr_cntr (
         input clk,
         input reset_n,
         input ram_ena,
-        output [10:0] ram_addr
+        output [10:0] ram_addr,
+        ouput ram_wr_n
         );
 
 reg [10:0] address;
@@ -21,11 +22,12 @@ always_ff @(posedge clk, negedge reset_n) begin
   // handle reset
   if (!reset_n) begin
     address <= start_address;
+    ram_wr_n <= 0;
     
   end else begin
     // ram_ena means a write is occuring this cycle
     if (ram_ena) begin
-
+      ram_wr_n <= 1'
       // hit the bottom so start rewriting data
       if (ram_addr == 0'h0000)
         address <= start_address;
@@ -34,7 +36,8 @@ always_ff @(posedge clk, negedge reset_n) begin
       else
         address <= address - 1;
         
-    end
+    end else begin
+      ram_wr_n <= 0;
   end 
 end
 

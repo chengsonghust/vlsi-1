@@ -1,0 +1,38 @@
+# vsim +nowarnTFMPC +nowarn3448 -do dofile -c -quiet -sdfmax /tb/tas_0=sdfout/tas.gate.sdf -t 1ps work.tb 
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: vlogout/tas.gate.v(28): Port 'p1' not found in module (1st connection).
+# ** Error: vlogout/tas.gate.v(28): Port 'p2' not found in module (2nd connection).
+# ** Error: vlogout/tas.gate.v(28): Port 'p3' not found in module (3rd connection).
+# ** Error: vlogout/tas.gate.v(28): Port 'p4' not found in module (4th connection).
+# ** Error: vlogout/tas.gate.v(28): Port 'p5' not found in module (5th connection).
+# ** Error: vlogout/tas.gate.v(30): Port 'p1' not found in module (1st connection).
+# ** Error: vlogout/tas.gate.v(30): Port 'p2' not found in module (2nd connection).
+# ** Error: vlogout/tas.gate.v(30): Port 'p3' not found in module (3rd connection).
+# ** Error: vlogout/tas.gate.v(30): Port 'p4' not found in module (4th connection).
+# ** Error: vlogout/tas.gate.v(30): Port 'p5' not found in module (5th connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p1' not found in module (1st connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p2' not found in module (2nd connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p3' not found in module (3rd connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p4' not found in module (4th connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p5' not found in module (5th connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p6' not found in module (6th connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p7' not found in module (7th connection).
+# ** Error: vlogout/tas.gate.v(32): Port 'p8' not found in module (8th connection).
+# ** Error: vlogout/tas.gate.v(34): Port 'p1' not found in module (1st connection).
+# ** Error: vlogout/tas.gate.v(34): Port 'p2' not found in module (2nd connection).
+# ** Error: vlogout/tas.gate.v(34): Port 'p3' not found in module (3rd connection).
+# ** Error: vlogout/tas.gate.v(34): Port 'p4' not found in module (4th connection).
+# ** Error: vlogout/tas.gate.v(34): Port 'p5' not found in module (5th connection).
+# ** Error: vlogout/tas.gate.v(34): Port 'p6' not found in module (6th connection).
+# ** Error: vlogout/tas.gate.v(36): Port 'p1' not found in module (1st connection).
+# ** Error: vlogout/tas.gate.v(36): Port 'p2' not found in module (2nd connection).
+# ** Error: vlogout/tas.gate.v(36): Port 'p3' not found in module (3rd connection).
+# ** Error: vlogout/tas.gate.v(36): Port 'p4' not found in module (4th connection).
+# ** Error: vlogout/tas.gate.v(36): Port 'p5' not found in module (5th connection).
+# ** Error: vlogout/tas.gate.v(36): Port 'p6' not found in module (6th connection).
+# ** Error: vlogout/tas.gate.v(38): Port 'p1' not found in module (1st connection).
+# ** Error: vlogout/tas.gate.v(38): Port 'p2' not found in module (2nd connection).
+# ** Error: vlogout/tas.gate.v(38): Port 'p3' not found in module (3rd connection).
+# ** Error: vlogout/tas.gate.v(38): Port 'p4' not found in module (4th connection).
+# Optimization failed
+# Error loading design
