@@ -16,9 +16,11 @@ module tas (
 
 wire a5_or_c3;
 wire [8:0] acc_out;
+
 wire [7:0] fifo_data;
 wire fifo_empty;
 wire fifo_full;
+
 wire [7:0] parallel_data;
 wire ram_ena;
 reg ram_ena_ffo;
@@ -29,8 +31,6 @@ wire zero_sel;
 
 assign a5_or_c3 = (parallel_data == 8'hA5) || (parallel_data == 8'hC3);
 assign ram_data = acc_out[7:0];
-assign ram_wr_n = ram_ena;
-assign ram_ena = wr_ram & !ram_ena_ffo;
 
 shift_reg S1 (clk_50,
               reset_n,
@@ -61,7 +61,8 @@ ctrl_blk_2 CB2 (fifo_empty,
                 reset_n,
                 zero_sel,
                 rd_fifo,
-                wr_ram
+                ram_ena,
+                ram_wr_n
                 );
 
 averager A1 (fifo_data,
@@ -71,20 +72,11 @@ averager A1 (fifo_data,
              reset_n,
              acc_out);
 
-ram_addr_cntr RAC1 (clk_2,
-                    reset_n,
-                    ram_ena,
-                    ram_addr
-                    );
-
-// delay flip flop to addr_counter
-always_ff @(posedge clk_2, negedge reset_n) begin
-  if (!reset_n) begin
-    ram_ena_ffo <= 0;
-  end else begin
-    ram_ena_ffo <= wr_ram;
-  end
-end
+ram_addresser RA1 (clk_2,
+                   reset_n,
+                   ram_ena,
+                   ram_addr
+                   );
 
 endmodule
 

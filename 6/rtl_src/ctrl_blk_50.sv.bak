@@ -1,104 +1,132 @@
-//        Author: Jordan Bayles
-//    Assignment: HW6 
-//        Course: ECE 474 - VLSI System Design
-//   Description: 50 MHz subsystem control system
-//                Decides whether or not the FIFO takes in data each clock cycle
+module ctrl_blk_50(
+	input 		clk_50,
+	input 		reset_n,
+	input 		data_ena,
+	input 		a5_or_c3,
+	output reg 	wr_fifo);
 
-module ctrl_blk_50 (
-        input a5_or_c3,
-        input data_ena,
-        input clk_50,
-        input reset_n,
-        output wr_fifo
-        );
+enum reg {not_detect	= 1'b0,
+          detect	= 1'b1,
+          detect_xx	= 'x} detect_ps, detect_ns;
 
-// specify the bit width of the enum to save space
-enum bit [1:0] {
-  byte_0 = 'h0,
-  byte_1 = 'h1,
-  byte_2 = 'h2,
-  byte_3 = 'h3
-} cur_byte_ps, cur_byte_ns;
+enum reg {not_write	= 1'b0,
+          write		= 1'b1,
+          write_xx	= 'x} write_ps, write_ns;
+
+enum reg [2:0]  {	header	= 3'b000,
+          		data_0	= 3'b001,
+	  		data_1	= 3'b010,
+	  		data_2	= 3'b011,
+	  		data_3	= 3'b100,
+          		data_type_xx	= 'x} data_type_ps, data_type_ns;
+
+enum reg {check		= 1'b0,
+          temp		= 1'b1,
+          packet_xx	= 'x} packet_type_ps, packet_type_ns;
 
 
-wire byte_assembled; // has the byte been assembled from serial data yet?
-reg data_written;    // has data been written yet?
-reg seen_header;     // have we seen a header yet?
+wire byte_assembled;
+wire [1:0] packet_cntr;
 
-// byte_assembled is a flag signaling that a a byte is ready
-// on parallel_data. It is the output of an AND gate with
-// inputs (not data_ena) and a flip flop with the old value of data_ena
-// data_ena is synchronous with the clock, otherwise we can't do this.
-assign byte_assembled = (!data_ena & data_written);
+//assignmants
+assign byte_assembled = ((detect_ps) & (!data_ena)) ? 1'b1 : 1'b0; 
 
-always_ff @(posedge clk_50, negedge reset_n) begin
-  if (!reset_n)
-    data_written <= 0;
-  else
-    data_written <= data_ena;
-end
+//************************************************************
+//sm #1  Is there data on the serial data line?
+//************************************************************
+always_ff @(posedge clk_50, negedge reset_n)
+    	if (!reset_n) detect_ps <= not_detect;        //after reset, go to state 'not_complete'
+    	else          detect_ps <= detect_ns;        //else, go to next state
 
-// we want to sync wr_fifo with clk_50 so we only command a write once
-wire writeable_byte;
-reg writeable_delay;
-assign writeable_byte = (seen_header & byte_assembled);
-assign wr_fifo = writeable_byte & !writeable_delay;
-
-always_ff @(posedge clk_50, negedge reset_n) begin
-  if (!reset_n)
-    writeable_delay <= 0;
-  else 
-    writeable_delay <= writeable_byte;
-end
-  
-// logic for the seen_header flag and output
-always_ff @(posedge clk_50, negedge reset_n) begin
-  if (!reset_n) begin
-     seen_header <= 0;
-   end
-  else begin
-    // if this is a header, just make note of it.
-    // NOTE that we may see a5 or c3 on parallel data while it is building a packet!
-    if (a5_or_c3 & byte_assembled)
-      seen_header <= 1;
-    
-    else if (seen_header) begin
-      // if it's the last byte in the packet reset the header flag 
-      if ((cur_byte_ps == byte_3) && (writeable_byte)
-        seen_header <= 0;
-    end 
-  end
-end
-
-// Keep track of the last data byte successfully read
-always_ff @(posedge clk_50, negedge reset_n) begin
-  if (!reset_n)
-    cur_byte_ps <= byte_0;
-  else
-    cur_byte_ps <= cur_byte_ns;
-end
-
-// state machine is simple: if the byte is writeable, assume its written
-// and increment self
 always_comb begin
-  //default
-  cur_byte_ns = byte_0;
-  if (writeable_byte) begin
-    case (cur_byte_ps)
-      byte_0:
-        cur_byte_ns = byte_1;
-      byte_1:
-        cur_byte_ns = byte_2;
-      byte_2:
-        cur_byte_ns = byte_3;
-      byte_3:
-        cur_byte_ns = byte_0;
-    endcase
-    
-  // otherwise just stay on the current byte
-  end else 
-    cur_byte_ns = cur_byte_ps;
-  
-end
+    	detect_ns = detect_xx;   //default assignments
+         
+    	case (detect_ps)
+     		not_detect:
+      			if (data_ena == 1'b1) 	detect_ns = detect;
+      			else               	detect_ns = not_detect;
+     		detect:
+      			if (data_ena == 1'b1) 	detect_ns = detect;
+      			else               	detect_ns = not_detect;
+    	endcase
+end//always_comb
+
+
+//************************************************************
+//sm #2 packet type
+//************************************************************
+always_ff @(posedge clk_50, negedge reset_n)
+    	if (!reset_n) packet_type_ps <= check;        	
+    	else          packet_type_ps <= packet_type_ns;        //else, go to next state
+
+always_comb begin
+    	packet_type_ns = packet_xx;   //default assignments
+         
+    	case (packet_type_ps)
+     		check:
+			if ((data_type_ps == header) & (a5_or_c3) & (byte_assembled)) packet_type_ns = temp;
+			else packet_type_ns = check;
+
+     		temp:
+      			if (data_type_ps != header ) 	packet_type_ns = temp; 
+      			else 				packet_type_ns = check; 
+    	endcase
+end//always_comb
+
+
+
+//************************************************************
+//sm #3 header or data 
+//************************************************************
+always_ff @(posedge clk_50, negedge reset_n)
+    	if (!reset_n) data_type_ps <= header;        //after reset, go to state 'not_complete'
+    	else          data_type_ps <= data_type_ns;        //else, go to next state
+
+always_comb begin
+    	data_type_ns = data_type_xx;   //default assignments
+         
+    	case (data_type_ps)
+     		header:
+			if ( byte_assembled ) 	data_type_ns = data_0;
+			else			data_type_ns = header;	
+     		data_0:
+      			if ( byte_assembled ) 	data_type_ns = data_1;
+      			else 			data_type_ns = data_0; 
+     		data_1:
+      			if ( byte_assembled ) 	data_type_ns = data_2;
+      			else 			data_type_ns = data_1; 
+     		data_2:
+      			if ( byte_assembled ) 	data_type_ns = data_3;
+      			else 			data_type_ns = data_2; 
+     		data_3:
+      			if ( byte_assembled ) 	data_type_ns = header;
+      			else 			data_type_ns = data_3; 
+    	endcase
+end//always_comb
+
+
+//************************************************************
+//sm #4 write state
+//************************************************************
+always_ff @(posedge clk_50, negedge reset_n)
+    	if (!reset_n) write_ps <= not_write;        	
+    	else          write_ps <= write_ns;        //else, go to next state
+
+always_comb begin
+    	write_ns = write_xx;   //default assignments
+        wr_fifo = 1'b0;
+    	case (write_ps)
+     		not_write:
+			if  ((data_type_ps != header) & (packet_type_ps == temp) & (byte_assembled)) write_ns = write;
+			else write_ns = not_write;
+
+     		write:
+			begin
+				wr_fifo = 1'b1;
+      				write_ns = not_write; 
+			end
+    	endcase
+end//always_comb
+
 
 endmodule

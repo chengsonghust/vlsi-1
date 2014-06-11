@@ -13,11 +13,10 @@ module shift_reg (
         );
 
 always_ff @(posedge clk, negedge reset_n) begin
-    if (!reset_n) begin
+    if (!reset_n)
       parallel_data <= '0;
-    end else if (data_ena) begin
-      parallel_data <= {serial_data, ps[7:1]};
-  end
+    else if (data_ena) 
+      parallel_data <= {serial_data, parallel_data[7:1]};
 end
 
 endmodule
